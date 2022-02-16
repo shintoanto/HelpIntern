@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/welcome_screen">
+
+    <fragment
+        android:id="@+id/singin_fragment"
+        android:name="com.shinto.helpintern.singin_fragment"
+        android:label="fragment_singin_fragment"
+        tools:layout="@layout/fragment_singin_fragment" />
+    <fragment
+        android:id="@+id/welcome_screen"
+        android:name="com.shinto.helpintern.welcome_screen"
+        android:label="fragment_welcome_screen"
+        tools:layout="@layout/fragment_welcome_screen">
+        <action
+            android:id="@+id/action_welcome_screen_to_singin_fragment"
+            app:destination="@id/singin_fragment" />
+    </fragment>
+</navigation>
