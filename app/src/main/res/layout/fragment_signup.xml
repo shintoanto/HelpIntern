@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -21,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="92dp"
-        android:text="Welcome \nBack!"
+        android:text="Create\nAccount"
         android:textColor="@color/black"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -42,45 +41,61 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailContainer"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:id="@+id/emailContainer"
             android:layout_height="match_parent"
-            android:hint="email"
-            app:helperText=""
+            android:hint="Email Address"
+            app:helperText="@string/app_name"
             app:helperTextTextColor="#F2E40F0F"
             app:startIconContentDescription="emailicon"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailEditext"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/emailEditext"
                 android:inputType="textEmailAddress"
-                android:lines="1" />
+                android:lines="1"
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/userContainer"
+            android:hint="User Name"
+            app:helperText="@string/app_name"
+            app:helperTextTextColor="#F2E40F0F"
+            app:startIconContentDescription="passwordlicon"
+            app:startIconDrawable="@drawable/username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:id="@+id/userEditText"
+                android:maxLength="14"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Password"
-            app:helperText=""
+            android:id="@+id/passwordContainer"
+            app:helperText="@string/app_name"
             app:helperTextTextColor="#F2E40F0F"
-            app:counterEnabled="true"
-            app:counterMaxLength="16"
-            app:passwordToggleEnabled="true"
             app:startIconContentDescription="passwordlicon"
             app:startIconDrawable="@drawable/passicon">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordEditext"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:inputType="numberPassword"
-                android:maxLength="16" />
+                android:maxLength="16"
+                android:id="@+id/passwordEditext"
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -103,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="11dp"
-            android:text="Sign in"
+            android:text="Sign up"
             android:textColor="@color/black"
             android:textSize="30sp" />
 
@@ -118,6 +133,14 @@
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_vector_2" />
+
+    <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -125,18 +148,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_vector_21" />
 
+
     <Button
         android:id="@+id/singin_btn"
-        style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="5dp"
-        android:text="@string/underlined_text"
+        android:text="already have an account"
+        style="?attr/borderlessButtonStyle"
         android:textAppearance="?attr/textAppearanceButton"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/singin_btn2"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/underlined_text"
+        android:textAppearance="?attr/textAppearanceButton"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

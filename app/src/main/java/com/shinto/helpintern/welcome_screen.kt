@@ -32,6 +32,13 @@ class welcome_screen : Fragment() {
             view.findNavController().navigate(R.id.action_welcome_screen_to_singin_fragment)
             //  Navigation.createNavigateOnClickListener(R.id.action_welcome_screen_to_singin_fragment)
         }
+        binding.btnSignIn.setOnClickListener {view:View ->
+            view.findNavController().navigate(R.id.singin_fragment)
+        }
+        binding.btnSignUp.setOnClickListener {view:View ->
+            view.findNavController().navigate(R.id.signup)
+        }
+
         val view = binding.root
         return view
 

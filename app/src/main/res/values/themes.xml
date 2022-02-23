@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.HelpIntern" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#FAF8FC</item>
+        <item name="colorPrimary">#0B0A0A</item>
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -12,6 +12,29 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/nunito_sans_semibold</item>
+        <item name="fontFamily">@font/nunito_sans_semibold</item>
+
+    </style>
+
+    <style name="button_style" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">#DD0B0B</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="android:background">#12279F</item>
+        <item name="android:tint">#3F51B5</item>
+
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="fontFamily">@font/ubuntu_medium</item>
+    </style>
+
+    <style name="heading" parent="Theme.MaterialComponents">
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="fontFamily">@font/roboto_black</item>
+    </style>
+
+    <style name="welcome_three_page" parent="Theme.MaterialComponents">
         <item name="android:fontFamily">@font/ubuntu_medium</item>
         <item name="fontFamily">@font/ubuntu_medium</item>
     </style>

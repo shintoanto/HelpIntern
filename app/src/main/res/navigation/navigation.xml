@@ -9,7 +9,11 @@
         android:id="@+id/singin_fragment"
         android:name="com.shinto.helpintern.singin_fragment"
         android:label="fragment_singin_fragment"
-        tools:layout="@layout/fragment_singin_fragment" />
+        tools:layout="@layout/fragment_singin_fragment" >
+        <action
+            android:id="@+id/action_singin_fragment_to_home_screen"
+            app:destination="@id/home_screen" />
+    </fragment>
     <fragment
         android:id="@+id/welcome_screen"
         android:name="com.shinto.helpintern.welcome_screen"
@@ -19,4 +23,29 @@
             android:id="@+id/action_welcome_screen_to_singin_fragment"
             app:destination="@id/singin_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/signup"
+        android:name="com.shinto.helpintern.signup"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" />
+    <fragment
+        android:id="@+id/home_screen"
+        android:name="com.shinto.helpintern.home_screen"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" />
+    <fragment
+        android:id="@+id/job_fragment"
+        android:name="com.shinto.helpintern.job_fragment"
+        android:label="fragment_job_fragment"
+        tools:layout="@layout/fragment_job_fragment" />
+    <fragment
+        android:id="@+id/jobs_description_fragment"
+        android:name="com.shinto.helpintern.jobs_description_fragment"
+        android:label="fragment_jobs_description_fragment"
+        tools:layout="@layout/fragment_jobs_description_fragment" />
+    <fragment
+        android:id="@+id/accomodation_description"
+        android:name="com.shinto.helpintern.accomodation_description"
+        android:label="fragment_accomodation_description"
+        tools:layout="@layout/fragment_accomodation_description" />
 </navigation>

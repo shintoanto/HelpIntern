@@ -66,13 +66,12 @@
         android:text="Sign in"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btnSignOut"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-
-        android:id="@+id/btnSignOut"
+        android:id="@+id/btnSignUp"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="118dp"
         android:layout_height="48dp"
