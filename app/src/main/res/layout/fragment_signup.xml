@@ -15,6 +15,7 @@
         app:srcCompat="@drawable/ic_vector_1" />
 
     <TextView
+        style=""
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
             android:id="@+id/emailContainer"
             android:layout_height="match_parent"
             android:hint="Email Address"
-            app:helperText="@string/app_name"
+            app:helperText=""
             app:helperTextTextColor="#F2E40F0F"
             app:startIconContentDescription="emailicon"
             app:startIconDrawable="@drawable/ic_baseline_email_24">
@@ -66,7 +67,7 @@
             android:layout_height="match_parent"
             android:id="@+id/userContainer"
             android:hint="User Name"
-            app:helperText="@string/app_name"
+            app:helperText=""
             app:helperTextTextColor="#F2E40F0F"
             app:startIconContentDescription="passwordlicon"
             app:startIconDrawable="@drawable/username">
@@ -85,7 +86,7 @@
             android:layout_height="match_parent"
             android:hint="Password"
             android:id="@+id/passwordContainer"
-            app:helperText="@string/app_name"
+            app:helperText=""
             app:helperTextTextColor="#F2E40F0F"
             app:startIconContentDescription="passwordlicon"
             app:startIconDrawable="@drawable/passicon">

@@ -48,4 +48,9 @@
         android:name="com.shinto.helpintern.accomodation_description"
         android:label="fragment_accomodation_description"
         tools:layout="@layout/fragment_accomodation_description" />
+    <fragment
+        android:id="@+id/accomodation_fragment"
+        android:name="com.shinto.helpintern.accomodation_fragment"
+        android:label="fragment_accomodation_fragment"
+        tools:layout="@layout/fragment_accomodation_fragment" />
 </navigation>
