@@ -1,49 +1,57 @@
 package com.shinto.helpintern
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shinto.helpintern.databinding.FragmentJobFragmentBinding
-import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 
-lateinit var bindingJ: FragmentJobFragmentBinding
-lateinit var navController:NavController
+@SuppressLint("StaticFieldLeak")
+lateinit var navController: NavController
 
 class job_fragment : Fragment() {
 
     lateinit var adapterclass: HelpInternrecycler
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
+
+    private var _binding: FragmentJobFragmentBinding? = null
+
+    // This property is only valid between onCreateView and
+// onDestroyView.
+    private val binding get()= _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        bindingJ = FragmentJobFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentJobFragmentBinding.inflate(inflater, container, false)
         navController = findNavController()
-
-        //inflater.inflate(R.layout.fragment_job_fragment, container, false)
-
-        bindingJ.apply {
+        viewModel.getJobList()
+        viewModel.joblistResponse.observe(viewLifecycleOwner, { response ->
+            Log.d("Res", response.city)
+        })
+        binding?.apply {
             jobRecycler.apply {
                 adapter = adapterclass
-                layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
             }
         }
 
-
-        return bindingJ.root
+        val view = binding?.root
+        return view!!
     }
 
 }

@@ -6,47 +6,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F6F6">
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fffff"
-        android:elevation="8dp"
-        android:orientation="vertical"
-        android:padding="15dp">
 
-        <LinearLayout
-            android:id="@+id/linBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#fffff"-->
+<!--        android:elevation="8dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="15dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-            <TextView
-                style="@style/heading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            tools:ignore="UseCompoundDrawables">-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/ic_location_black" />
+<!--            <TextView-->
+<!--                style="@style/heading"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/app_name"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="24sp" />-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/ic_message_black" />
-        </LinearLayout>
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/ic_location_black" />-->
 
-    </LinearLayout>
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/ic_message_black" />-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jobRecycler"
@@ -64,21 +66,27 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="33dp"
         android:text="Accomodation"
         android:textColor="@color/black"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="145dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="243dp"
         android:text="Find your stay"
-        android:textSize="22sp"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="214dp" />
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

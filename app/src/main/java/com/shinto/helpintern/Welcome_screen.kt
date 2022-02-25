@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 import com.shinto.helpintern.databinding.FragmentWelcomeScreenBinding
 
-class welcome_screen : Fragment() {
+class Welcome_screen : Fragment() {
     private var _binding: FragmentWelcomeScreenBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

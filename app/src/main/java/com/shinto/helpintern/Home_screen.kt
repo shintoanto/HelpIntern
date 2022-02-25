@@ -7,22 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import com.shinto.helpintern.databinding.FragmentHomeScreenBinding
 
-lateinit var bindingH: FragmentHomeScreenBinding
-
 class home_screen : Fragment() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+    private var _binding:FragmentHomeScreenBinding?= null
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        bindingH = FragmentHomeScreenBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
 
-        return bindingH.root
+        return binding?.root
         // inflater.inflate(R.layout.fragment_home_screen, container, false)
     }
 }

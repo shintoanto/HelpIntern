@@ -6,47 +6,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F6F6F6">
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fffff"
-        android:elevation="8dp"
-        android:orientation="vertical"
-        android:padding="15dp">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#fffff"-->
+<!--        android:elevation="8dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="15dp">-->
 
-        <LinearLayout
-            android:id="@+id/linBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            tools:ignore="UseCompoundDrawables">-->
 
-            <TextView
-                style="@style/heading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+<!--            <TextView-->
+<!--                style="@style/heading"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/app_name"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="24sp" />-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/ic_location_black" />
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/ic_location_black" />-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/ic_message_black" />
-        </LinearLayout>
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/ic_message_black" />-->
+<!--        </LinearLayout>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jobRecycler"

@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/welcome_screen"
-        android:name="com.shinto.helpintern.welcome_screen"
+        android:name="com.shinto.helpintern.Welcome_screen"
         android:label="fragment_welcome_screen"
         tools:layout="@layout/fragment_welcome_screen">
         <action
