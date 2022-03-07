@@ -27,4 +27,8 @@ class accomodation_fragment : Fragment() {
         return view
     // inflater.inflate(R.layout.fragment_accomodation_fragment, container, false)
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

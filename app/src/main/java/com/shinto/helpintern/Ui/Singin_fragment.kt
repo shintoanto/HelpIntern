@@ -1,6 +1,7 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Ui
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -8,55 +9,71 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.shinto.helpintern.R
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 
-lateinit var binding: FragmentSinginFragmentBinding
 
 class singin_fragment : Fragment() {
+    private lateinit var auth: FirebaseAuth
+    private var _binding: FragmentSinginFragmentBinding? = null
+    private val binding get() = _binding
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            reload()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Initialize Firebase Auth
+        auth = Firebase.auth
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSinginFragmentBinding.inflate(inflater, container, false)
-        binding.singinBtn.setOnClickListener {
+        _binding = FragmentSinginFragmentBinding.inflate(inflater, container, false)
+        binding?.singinBtn?.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_welcome_screen_to_singin_fragment)
         }
-        binding.imgSignIn.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.home_screen)
+        binding?.imgSignIn?.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.home_scrn)
         }
         emailFocusChangeListner()
         passwordFocusChangeListner()
         val em = "shinto@gmail.com"
         var pas = "123"
-        val email = binding.emailEditext.text.toString()
-        var pass = binding.passwordEditext.text.toString()
+        val email = binding?.emailEditext?.text.toString()
+        var pass = binding?.passwordEditext?.text.toString()
         if (email == em && pass == pas) {
             view?.findNavController()?.navigate(R.id.home_screen)
-        }else{
-
+        } else {
+            Log.d("res", "the")
         }
 
-        val view = binding.root
-        return view
+        val view = binding?.root
+        return view!!
         //inflater.inflate(R.layout.fragment_singin_fragment, container, false)
     }
 
     private fun emailFocusChangeListner() {
-        binding.emailEditext.setOnFocusChangeListener { _, focused ->
+        binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.emailContainer.helperText = validEmail()
+                binding?.emailContainer?.helperText = validEmail()
             }
         }
 
     }
 
     private fun validEmail(): String? {
-        val emailText = binding.emailEditext.text.toString()
+        val emailText = binding?.emailEditext?.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
             return "Invalid Email Address"
         }
@@ -64,17 +81,16 @@ class singin_fragment : Fragment() {
     }
 
     private fun passwordFocusChangeListner() {
-        binding.passwordEditext.setOnFocusChangeListener { _, focused ->
+        binding?.passwordEditext?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.passwordContainer.helperText = validPassword()
+                binding?.passwordContainer?.helperText = validPassword()
             }
         }
-        var pass = binding.passwordEditext.text
+        var pass = binding?.passwordEditext?.text
     }
 
-
     private fun validPassword(): String? {
-        val passwordText = binding.passwordEditext.text.toString()
+        val passwordText = binding?.passwordEditext?.text.toString()
         if (passwordText.length < 8) {
             return "Minimum 8 character"
         }
@@ -88,6 +104,10 @@ class singin_fragment : Fragment() {
             return "Must contain 1 lower-case Character"
         }
         return null
+    }
+
+    fun reload() {
+        Log.d("res", "hail")
     }
 
     fun onSNACK(view: View) {
@@ -106,9 +126,9 @@ class singin_fragment : Fragment() {
         snackbar.show()
     }
 
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

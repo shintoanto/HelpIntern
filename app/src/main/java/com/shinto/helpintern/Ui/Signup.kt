@@ -1,4 +1,4 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Ui
 
 import android.os.Bundle
 import android.util.Patterns
@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.shinto.helpintern.databinding.FragmentSignupBinding
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 
-lateinit var _binding: FragmentSignupBinding
 
 class signup : Fragment() {
+    private var _binding: FragmentSignupBinding? = null
+    private val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +22,7 @@ class signup : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): ConstraintLayout? {
         // Inflate the layout for this fragment
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
@@ -28,19 +30,20 @@ class signup : Fragment() {
         passwordFocusChangeListner()
         usernameFocusChangeListner()
 
-        return _binding.root
+        return binding?.root
         // inflater.inflate(R.layout.fragment_signup, container, false)
     }
+
     private fun emailFocusChangeListner() {
-        _binding.emailEditext.setOnFocusChangeListener { _, focused ->
+        _binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                _binding.emailContainer.helperText = validEmail()
+                _binding!!.emailContainer.helperText = validEmail()
             }
         }
     }
 
     private fun validEmail(): String? {
-        val emailText = _binding.emailEditext.text.toString()
+        val emailText = _binding?.emailEditext?.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
             return "Invalid Email Address"
         }
@@ -48,15 +51,15 @@ class signup : Fragment() {
     }
 
     private fun passwordFocusChangeListner() {
-        _binding.passwordEditext.setOnFocusChangeListener { _, focused ->
+        _binding?.passwordEditext?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                _binding.passwordContainer.helperText = validPassword()
+                _binding!!.passwordContainer.helperText = validPassword()
             }
         }
     }
 
     private fun validPassword(): String? {
-        val passwordText = _binding.passwordEditext.text.toString()
+        val passwordText = _binding?.passwordEditext?.text.toString()
         if (passwordText.length < 8) {
             return "Minimum 8 character"
         }
@@ -73,19 +76,20 @@ class signup : Fragment() {
     }
 
     private fun usernameFocusChangeListner() {
-        _binding.userEditText.setOnFocusChangeListener { _, focused ->
+        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                _binding.userContainer.helperText = validUser()
+                _binding!!.userContainer.helperText = validUser()
             }
         }
     }
 
     private fun validUser(): String? {
-        val emailText = _binding.userEditText.text.toString()
+        val emailText = _binding?.userEditText?.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
             return "Invalid user Address"
         }
         return null
     }
+
 
 }

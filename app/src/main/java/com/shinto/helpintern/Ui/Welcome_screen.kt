@@ -1,13 +1,12 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
+import com.shinto.helpintern.R
 import com.shinto.helpintern.databinding.FragmentWelcomeScreenBinding
 
 class Welcome_screen : Fragment() {
@@ -24,7 +23,7 @@ class Welcome_screen : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentWelcomeScreenBinding.inflate(inflater, container, false)
         // return inflater.inflate(R.layout.fragment_welcome_screen, container, false)
@@ -41,7 +40,6 @@ class Welcome_screen : Fragment() {
 
         val view = binding.root
         return view
-
     }
 
     override fun onDestroyView() {

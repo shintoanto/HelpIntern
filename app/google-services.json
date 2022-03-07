@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "639370015956",
+    "project_id": "helpintern-4d8de",
+    "storage_bucket": "helpintern-4d8de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639370015956:android:7f9558e4dfcf974bb33741",
+        "android_client_info": {
+          "package_name": "com.shinto.helpintern"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "639370015956-sgcscckljl37dn2nutvldh508u79s8sf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEUQpTRVeJ6mp26wkSNOVAVpoKHjssUqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "639370015956-sgcscckljl37dn2nutvldh508u79s8sf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

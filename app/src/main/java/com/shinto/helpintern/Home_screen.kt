@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.shinto.helpintern.databinding.FragmentHomeScreenBinding
 
-class home_screen : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+class Home_screen : Fragment() {
+
     private var _binding:FragmentHomeScreenBinding?= null
     private val binding get() = _binding
 
@@ -21,7 +20,13 @@ class home_screen : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
 
+        binding?.cardJobPortal?.setOnClickListener { view:View ->
+            view.findNavController().navigate(R.id.job_fragment)
+        }
         return binding?.root
-        // inflater.inflate(R.layout.fragment_home_screen, container, false)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+       _binding = null
     }
 }
