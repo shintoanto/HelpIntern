@@ -19,12 +19,11 @@
         style=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="92dp"
         android:text="Create\nAccount"
         android:textColor="@color/black"
         android:textSize="48sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -226,30 +225,5 @@
         app:srcCompat="@drawable/ic_vector_21" />
 
 
-    <Button
-        android:id="@+id/singin_btn"
-        style="?attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="5dp"
-        android:text="already have an account"
-        android:textAppearance="?attr/textAppearanceButton"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/singin_btn2"
-        style="?attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginBottom="4dp"
-        android:text="@string/underlined_text"
-        android:textAppearance="?attr/textAppearanceButton"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

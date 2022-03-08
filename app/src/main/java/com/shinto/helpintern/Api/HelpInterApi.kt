@@ -3,6 +3,7 @@ package com.shinto.helpintern.Api
 import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Data.Post.UserRegistration
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -11,5 +12,8 @@ interface HelpInterApi {
     suspend fun JobList(): Response<List<JobListDataClass>>
 
     @POST("user/register/")
-    suspend fun userRegister(): Response<List<UserRegistration>>
+    suspend fun userRegister(
+        @Body userRegistration: UserRegistration
+    ): Response<List<UserRegistration>>
+
 }

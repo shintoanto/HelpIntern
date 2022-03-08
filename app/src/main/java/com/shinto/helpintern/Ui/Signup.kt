@@ -1,19 +1,30 @@
 package com.shinto.helpintern.Ui
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import com.shinto.helpintern.Data.Post.UserRegistration
+import com.shinto.helpintern.MainViewModel
+import com.shinto.helpintern.Model.ViewModelFactory
+import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.databinding.FragmentSignupBinding
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 
-
 class signup : Fragment() {
-    private var _binding: FragmentSignupBinding? = null
+    lateinit var _binding: FragmentSignupBinding
     private val binding get() = _binding
+    private lateinit var viewModel: MainViewModel
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,28 +33,42 @@ class signup : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): ConstraintLayout? {
+    ): ConstraintLayout {
         // Inflate the layout for this fragment
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
+        val repository = Repository()
+        navController = findNavController()
+        val viewModelFactory = ViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.registration(UserRegistration("s", "s", "s", "s", "s", "s", "s", "s"))
+//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+//            if (response.isSuccessful) {
+//                Log.d("Res", response.body().toString())
+//                Log.d("Res", response.code().toString())
+//                Log.d("Res", response.message())
+//            } else {
+//                Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+//            }
+//        })
         emailFocusChangeListner()
         passwordFocusChangeListner()
-        usernameFocusChangeListner()
+        //  usernameFocusChangeListner()
 
-        return binding?.root
+        return binding.root
         // inflater.inflate(R.layout.fragment_signup, container, false)
     }
 
     private fun emailFocusChangeListner() {
-        _binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
+        _binding.emailEdtTxt.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                _binding!!.emailContainer.helperText = validEmail()
+                _binding.emailContainer.helperText = validEmail()
             }
         }
     }
 
     private fun validEmail(): String? {
-        val emailText = _binding?.emailEditext?.text.toString()
+        val emailText = _binding.emailEdtTxt.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
             return "Invalid Email Address"
         }
@@ -51,15 +76,15 @@ class signup : Fragment() {
     }
 
     private fun passwordFocusChangeListner() {
-        _binding?.passwordEditext?.setOnFocusChangeListener { _, focused ->
+        _binding.passwordEditext.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                _binding!!.passwordContainer.helperText = validPassword()
+                _binding.passwordContainer.helperText = validPassword()
             }
         }
     }
 
     private fun validPassword(): String? {
-        val passwordText = _binding?.passwordEditext?.text.toString()
+        val passwordText = _binding.passwordEditext.text.toString()
         if (passwordText.length < 8) {
             return "Minimum 8 character"
         }
@@ -75,21 +100,21 @@ class signup : Fragment() {
         return null
     }
 
-    private fun usernameFocusChangeListner() {
-        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                _binding!!.userContainer.helperText = validUser()
-            }
-        }
-    }
-
-    private fun validUser(): String? {
-        val emailText = _binding?.userEditText?.text.toString()
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-            return "Invalid user Address"
-        }
-        return null
-    }
+//    private fun usernameFocusChangeListner() {
+//        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
+//            if (!focused) {
+//                _binding!!.userContainer.helperText = validUser()
+//            }
+//        }
+//    }
+//
+//    private fun validUser(): String? {
+//        val emailText = _binding?.userEditText?.text.toString()
+//        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
+//            return "Invalid user Address"
+//        }
+//        return null
+//    }
 
 
 }
