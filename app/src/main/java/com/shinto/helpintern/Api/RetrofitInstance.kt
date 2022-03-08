@@ -5,16 +5,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-     val retrofitIntace:HelpInterApi by lazy {
+    val retrofitIntace: HelpInterApi by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(HelpInterApi::class.java)
     }
-//    val HelpInterApi: HelpInterApi by lazy {
-//        retrofitIntace.create(HelpInterApi::class.java)
-//    }
 }
 
 // Configure Google Sign In

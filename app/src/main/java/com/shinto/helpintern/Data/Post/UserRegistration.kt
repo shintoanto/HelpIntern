@@ -1,4 +1,4 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Data.Post
 
 data class UserRegistration(
     val email: String,

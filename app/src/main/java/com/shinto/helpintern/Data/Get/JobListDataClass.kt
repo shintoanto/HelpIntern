@@ -1,4 +1,4 @@
-package com.shinto.helpintern.Data
+package com.shinto.helpintern.Data.Get
 
 data class JobListDataClass(
     val city: String,

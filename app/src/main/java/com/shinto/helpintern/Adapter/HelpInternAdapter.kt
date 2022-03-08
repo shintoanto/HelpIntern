@@ -1,7 +1,6 @@
 package com.shinto.helpintern
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.shinto.helpintern.Data.JobListDataClass
-import org.w3c.dom.Text
+import com.shinto.helpintern.Data.Get.JobListDataClass
 
 class HelpInternrecycler(val jobResponse: List<JobListDataClass>?, val context: Context?) :
     RecyclerView.Adapter<HelpInternrecycler.HelpInternViewHolder>() {

@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.shinto.helpintern.Data.JobListDataClass
+import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.HelpInternrecycler
 import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Repository.Repository

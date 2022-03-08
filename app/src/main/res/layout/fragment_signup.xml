@@ -15,8 +15,8 @@
         app:srcCompat="@drawable/ic_vector_1" />
 
     <TextView
-        style=""
         android:id="@+id/textView2"
+        style=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
@@ -42,30 +42,49 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/firstNameContainer"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:id="@+id/emailContainer"
             android:layout_height="match_parent"
-            android:hint="Email Address"
+            android:hint="First Name"
             app:helperText=""
             app:helperTextTextColor="#F2E40F0F"
             app:startIconContentDescription="emailicon"
-            app:startIconDrawable="@drawable/ic_baseline_email_24">
+            app:startIconDrawable="@drawable/username">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/firstEditxt"
                 android:layout_width="match_parent"
-                android:id="@+id/emailEditext"
-                android:inputType="textEmailAddress"
-                android:lines="1"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lastNameContainer"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/userContainer"
+            android:hint="Last Name"
+            app:helperText=""
+            app:helperTextTextColor="#F2E40F0F"
+            app:startIconContentDescription="passwordlicon"
+            app:startIconDrawable="@drawable/username">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lastEdtTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="14" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usrContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:hint="User Name"
             app:helperText=""
             app:helperTextTextColor="#F2E40F0F"
@@ -73,30 +92,87 @@
             app:startIconDrawable="@drawable/username">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usrEdtext"
                 android:layout_width="match_parent"
-                android:inputType="text"
-                android:id="@+id/userEditText"
-                android:maxLength="14"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:maxLength="16" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Email"
+            app:helperText=""
+            app:helperTextTextColor="#F2E40F0F"
+            app:startIconContentDescription="passwordlicon"
+            app:startIconDrawable="@drawable/ic_baseline_email_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEdtTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:maxLength="16" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phNumContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Phone Number"
+            app:helperText=""
+            app:helperTextTextColor="#F2E40F0F"
+            app:startIconContentDescription="passwordlicon"
+            app:startIconDrawable="@drawable/phoneicon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phNumEdtTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:maxLength="16" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordContainer"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Password"
-            android:id="@+id/passwordContainer"
             app:helperText=""
             app:helperTextTextColor="#F2E40F0F"
             app:startIconContentDescription="passwordlicon"
             app:startIconDrawable="@drawable/passicon">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:inputType="numberPassword"
-                android:maxLength="16"
                 android:id="@+id/passwordEditext"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:maxLength="16" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/rePasswordContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Re Password"
+            app:helperText=""
+            app:helperTextTextColor="#F2E40F0F"
+            app:startIconContentDescription="passwordlicon"
+            app:startIconDrawable="@drawable/passicon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/rePasswordEditext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:maxLength="16" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -152,12 +228,12 @@
 
     <Button
         android:id="@+id/singin_btn"
+        style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="5dp"
         android:text="already have an account"
-        style="?attr/borderlessButtonStyle"
         android:textAppearance="?attr/textAppearanceButton"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
