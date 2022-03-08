@@ -26,13 +26,13 @@
         <entry key="app/src/main/res/layout/fragment_accomodation_description.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_accomodation_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_home_scrn.xml" value="0.16075245831551946" />
-        <entry key="app/src/main/res/layout/fragment_job_fragment.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_home_scrn.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_job_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_jobs_description_fragment.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_singin_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_welcome_screen.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/jobscardview.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/jobscardview.xml" value="0.22" />
         <entry key="app/src/main/res/layout/layout_signin.xml" value="0.2" />
       </map>
     </option>

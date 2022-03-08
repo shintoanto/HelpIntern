@@ -1,4 +1,4 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Util
 
 class Constants {
     companion object{

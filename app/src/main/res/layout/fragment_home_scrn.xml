@@ -13,7 +13,8 @@
         android:background="@drawable/bg"
         android:elevation="8dp"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="15dp"
+        tools:ignore="MissingConstraints">
         <LinearLayout
             android:id="@+id/linBar"
             android:layout_width="match_parent"

@@ -1,25 +1,23 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Api
 
-import com.shinto.helpintern.Api.HelpInterApi
-import com.shinto.helpintern.Constants.Companion.BASE_URL
+import com.shinto.helpintern.Util.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-
-    private val retrofitIntace by lazy {
+     val retrofitIntace:HelpInterApi by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+            .create(HelpInterApi::class.java)
     }
-    val HelpInterApi: HelpInterApi by lazy {
-        retrofitIntace.create(HelpInterApi::class.java)
-    }
-
+//    val HelpInterApi: HelpInterApi by lazy {
+//        retrofitIntace.create(HelpInterApi::class.java)
+//    }
 }
 
- // Configure Google Sign In
+// Configure Google Sign In
 //val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 //    .requestIdToken(getString(R.string.default_web_client_id))
 //    .requestEmail()

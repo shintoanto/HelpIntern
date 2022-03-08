@@ -17,9 +17,12 @@ import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 
 
 class singin_fragment : Fragment() {
+
     private lateinit var auth: FirebaseAuth
+
     private var _binding: FragmentSinginFragmentBinding? = null
     private val binding get() = _binding
+
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -49,11 +52,11 @@ class singin_fragment : Fragment() {
         emailFocusChangeListner()
         passwordFocusChangeListner()
         val em = "shinto@gmail.com"
-        var pas = "123"
+        val pas = "123"
         val email = binding?.emailEditext?.text.toString()
-        var pass = binding?.passwordEditext?.text.toString()
+        val pass = binding?.passwordEditext?.text.toString()
         if (email == em && pass == pas) {
-            view?.findNavController()?.navigate(R.id.home_screen)
+            view?.findNavController()?.navigate(R.id.home_scrn)
         } else {
             Log.d("res", "the")
         }
@@ -86,7 +89,6 @@ class singin_fragment : Fragment() {
                 binding?.passwordContainer?.helperText = validPassword()
             }
         }
-        var pass = binding?.passwordEditext?.text
     }
 
     private fun validPassword(): String? {

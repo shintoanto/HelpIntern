@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.shinto.helpintern.R
 import com.shinto.helpintern.databinding.FragmentHomeScrnBinding
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
@@ -25,9 +26,12 @@ class home_scrn : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeScrnBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
-        binding?.jobBtn?.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.job_fragment)
+//        // Inflate the layout for this fragment
+//        binding?.jobBtn?.setOnClickListener {
+//            findNavController().navigate(R.id.job_fragment)
+//        }
+        binding?.cardJobPortal?.setOnClickListener { view:View ->
+            view.findNavController().navigate(R.id.job_fragment)
         }
         val view = binding?.root
         return view!!// inflater.inflate(R.layout.fragment_home_scrn, container, false)

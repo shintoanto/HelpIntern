@@ -27,13 +27,11 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment? ?: return
 
         val navController = host.navController
-        val actionBar = supportActionBar
+//        val actionBar = supportActionBar
+//
+//
+//            actionBar?.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+//            setupActionBarWithNavController(navController)
 
-        if (actionBar != null) {
-            actionBar.setBackgroundDrawable(ColorDrawable(Color.BLACK))
-            setupActionBarWithNavController(navController)
-        } else {
-            Log.d("Res", "Not working")
-        }
     }
 }

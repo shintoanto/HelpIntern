@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shinto.helpintern.Data.JobListDataClass
-import com.shinto.helpintern.Data.Job_Provider
 import com.shinto.helpintern.Repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response

@@ -1,7 +1,8 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Repository.Repository
 
 class ViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
