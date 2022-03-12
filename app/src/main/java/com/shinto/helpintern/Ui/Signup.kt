@@ -40,17 +40,31 @@ class signup : Fragment() {
         val repository = Repository()
         navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)
+        val firstName = binding.firstEditxt.text
+        val secondName = binding.lastEdtTxt.text
+        val userName = binding.usrEdtext.text
+        val email = binding.emailEdtTxt.text
+        val phoneNumber = binding.phNumEdtTxt.text
+        val password = binding.passwordEditext
+        val rePassword = binding.rePasswordEditext.text
+
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.registration(UserRegistration("s", "s", "s", "s", "s", "s", "s", "s"))
-//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
-//            if (response.isSuccessful) {
-//                Log.d("Res", response.body().toString())
-//                Log.d("Res", response.code().toString())
-//                Log.d("Res", response.message())
-//            } else {
-//                Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
-//            }
-//        })
+        viewModel.registration(
+            UserRegistration(
+                "$email",
+                "$firstName",
+                "$secondName",
+                "$password",
+                "$phoneNumber",
+                "$",
+                "$rePassword",
+                "$userName"
+            )
+        )
+
+        binding.imgSignIn.setOnClickListener {
+            signUp()
+        }
         emailFocusChangeListner()
         passwordFocusChangeListner()
         //  usernameFocusChangeListner()
@@ -100,21 +114,33 @@ class signup : Fragment() {
         return null
     }
 
-//    private fun usernameFocusChangeListner() {
-//        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
-//            if (!focused) {
-//                _binding!!.userContainer.helperText = validUser()
-//            }
-//        }
-//    }
-//
-//    private fun validUser(): String? {
-//        val emailText = _binding?.userEditText?.text.toString()
-//        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-//            return "Invalid user Address"
-//        }
-//        return null
-//    }
+    private fun signUp() {
+        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Res", response.body().toString())
+                Log.d("Res", response.code().toString())
+                Log.d("Res", response.message())
+            } else {
+                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+                Log.d("Res", "Not working"+response.message())
+            }
+        })
+    }
 
+    private fun usernameFocusChangeListner() {
+        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                _binding!!.userContainer.helperText = validUser()
+            }
+        }
+    }
+
+    private fun validUser(): String? {
+        val emailText = _binding?.userEditText?.text.toString()
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
+            return "Invalid user Address"
+        }
+        return null
+    }
 
 }

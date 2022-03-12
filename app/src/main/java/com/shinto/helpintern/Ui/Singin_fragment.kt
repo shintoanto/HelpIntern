@@ -72,7 +72,6 @@ class singin_fragment : Fragment() {
                 binding?.emailContainer?.helperText = validEmail()
             }
         }
-
     }
 
     private fun validEmail(): String? {

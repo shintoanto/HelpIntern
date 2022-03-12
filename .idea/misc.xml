@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/bg.xml" value="0.1205" />
         <entry key="app/src/main/res/drawable/btn_style.xml" value="0.1485" />
         <entry key="app/src/main/res/drawable/first_bg.xml" value="0.173" />
+        <entry key="app/src/main/res/drawable/home_24.xml" value="0.142" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_ellipse_7.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_ellipse_9.xml" value="0.1" />
@@ -28,12 +29,12 @@
         <entry key="app/src/main/res/layout/fragment_accomodation_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_home_scrn.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_job_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_job_fragment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_jobs_description_fragment.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_singin_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_welcome_screen.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/jobscardview.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/jobscardview.xml" value="0.2" />
         <entry key="app/src/main/res/layout/layout_signin.xml" value="0.2" />
       </map>
     </option>

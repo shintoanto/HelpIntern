@@ -21,17 +21,9 @@ class HelpInternrecycler(val jobResponse: List<JobListDataClass>?, val context: 
     }
 
     inner class HelpInternViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val Heading = view.findViewById<TextView>(R.id.textView7)
-        val secondTxt = view.findViewById<TextView>(R.id.textView8)
-        val thirdTxt = view.findViewById<TextView>(R.id.textView9)
-        val fourthTxt = view.findViewById<TextView>(R.id.textView10)
-        val fifthTxt = view.findViewById<TextView>(R.id.textView11)
-        val sixTxt = view.findViewById<TextView>(R.id.textView12)
-        val seventhTxt = view.findViewById<TextView>(R.id.textView13)
-        val eightTxt = view.findViewById<TextView>(R.id.textView14)
-        val nineTxt = view.findViewById<TextView>(R.id.textView15)
-        val tenTxt = view.findViewById<TextView>(R.id.textView16)
-        val eleTxt = view.findViewById<TextView>(R.id.textView17)
+        val heading = view.findViewById<TextView>(R.id.headingTxt)
+        val designation = view.findViewById<TextView>(R.id.designationTxt)
+        val minimumWage = view.findViewById<TextView>(R.id.minmWageTxt)
     }
 
     private val diffcallback = object : DiffUtil.ItemCallback<JobListDataClass>() {
@@ -52,17 +44,13 @@ class HelpInternrecycler(val jobResponse: List<JobListDataClass>?, val context: 
     val differ = AsyncListDiffer(this, diffcallback)
 
     override fun onBindViewHolder(holder: HelpInternrecycler.HelpInternViewHolder, position: Int) {
-        holder.Heading.text = jobResponse?.get(position)?.company_name
-        holder.secondTxt.text = jobResponse?.get(position)?.designation
-        holder.thirdTxt.text = jobResponse?.get(position)?.description
-        holder.fourthTxt.text = jobResponse?.get(position)?.province
-        holder.fifthTxt.text = jobResponse?.get(position)?.city
-        holder.sixTxt.text = jobResponse?.get(position)?.designation
-        holder.seventhTxt.text = jobResponse?.get(position)?.job_type
-        holder.eightTxt.text = jobResponse?.get(position)?.provider_name
-        holder.nineTxt.text = jobResponse?.get(position)?.requirements
-       // holder.tenTxt.text = jobResponse?.get(position)?.provider.toString()
-        holder.eleTxt.text = jobResponse?.get(position)?.minimum_wage.toString()
+        holder.heading.text = jobResponse?.get(position)?.company_name
+        holder.designation.text = jobResponse?.get(position)?.designation
+        // holder.tenTxt.text = jobResponse?.get(position)?.provider.toString()
+        holder.minimumWage.text = jobResponse?.get(position)?.minimum_wage.toString()
+        holder.itemView.setOnClickListener{
+            onItemClickListener
+        }
     }
 
     private var onItemClickListener: ((JobListDataClass) -> Unit)? = null

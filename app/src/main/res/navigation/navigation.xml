@@ -41,7 +41,11 @@
         android:id="@+id/jobs_description_fragment"
         android:name="com.shinto.helpintern.Ui.jobs_description_fragment"
         android:label="fragment_jobs_description_fragment"
-        tools:layout="@layout/fragment_jobs_description_fragment" />
+        tools:layout="@layout/fragment_jobs_description_fragment" >
+        <argument
+            android:name="JobList"
+            app:argType="com.shinto.helpintern.Data.Get.JobListDataClass" />
+    </fragment>
     <fragment
         android:id="@+id/accomodation_description"
         android:name="com.shinto.helpintern.Ui.accomodation_description"

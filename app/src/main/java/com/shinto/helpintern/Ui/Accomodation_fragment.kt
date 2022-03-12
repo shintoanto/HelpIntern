@@ -25,7 +25,6 @@ class accomodation_fragment : Fragment() {
         // Inflate the layout for this fragment
         val view = binding?.root
         return view
-    // inflater.inflate(R.layout.fragment_accomodation_fragment, container, false)
     }
     override fun onDestroyView() {
         super.onDestroyView()

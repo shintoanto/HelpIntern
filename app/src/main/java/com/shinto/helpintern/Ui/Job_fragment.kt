@@ -38,11 +38,14 @@ class Job_fragment : Fragment() {
             if (response.isSuccessful) {
                 response.body().let { jobResponse ->
                     //joblistAdapter = HelpInternrecycler(jobResponse,context)
-                    //joblistAdapter.differ.submitList(jobResponse)
+                    // joblistAdapter.differ.submitList(jobResponse)
                     job_list_adapter(jobResponse, context)
                 }
             }
         })
+//        joblistAdapter.setOnClickListner {
+//            val action =
+//        }
 
         val view = binding.root
         return view
@@ -50,11 +53,11 @@ class Job_fragment : Fragment() {
 
     private fun job_list_adapter(jobResponse: List<JobListDataClass>?, context: Context?) {
         joblistAdapter = HelpInternrecycler(jobResponse, context)
-        binding.jobRecycler.setHasFixedSize(true)
-        binding.jobRecycler.setItemViewCacheSize(13)
         binding.jobRecycler.adapter = joblistAdapter
         binding.apply {
             jobRecycler.apply {
+                setHasFixedSize(true)
+                setItemViewCacheSize(13)
                 adapter = joblistAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             }

@@ -1,5 +1,11 @@
 package com.shinto.helpintern.Data.Get
 
+import android.os.Parcelable
+import androidx.versionedparcelable.VersionedParcelize
+import kotlinx.android.parcel.Parcelize
+
+
+@Parcelize
 data class JobListDataClass(
     val city: String,
     val company: Int,
@@ -13,4 +19,4 @@ data class JobListDataClass(
     val provider_name: String,
     val province: String,
     val requirements: String
-)
+):Parcelable
