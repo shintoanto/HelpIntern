@@ -12,12 +12,12 @@ interface HelpInterApi {
     @GET("user/job-list")
     suspend fun JobList(): Response<List<JobListDataClass>>
 
-    @POST("user/register/")
+    @POST("user/register")
     suspend fun userRegister(
         @Body userRegistration: UserRegistration
     ): Response<List<UserRegistration>>
 
 
-    @GET("user/accommodation-list-filter/")
+    @GET("user/accommodation-list-filter")
     suspend fun userAccomodationListApi(): Response<List<AccomodationDataClassItem>>
 }

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.shinto.helpintern.Data.Get.JobListDataClass
 
-class HelpInternrecycler(val jobResponse: List<JobListDataClass>?, val context: Context?) :
+class HelpInternrecycler(private val jobResponse: List<JobListDataClass>?, private val context: Context?) :
     RecyclerView.Adapter<HelpInternrecycler.HelpInternViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
