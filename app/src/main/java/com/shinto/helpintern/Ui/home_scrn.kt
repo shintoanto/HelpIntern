@@ -27,14 +27,16 @@ class home_scrn : Fragment() {
     ): View {
         _binding = FragmentHomeScrnBinding.inflate(inflater, container, false)
 //        // Inflate the layout for this fragment
-//        binding?.jobBtn?.setOnClickListener {
-//            findNavController().navigate(R.id.job_fragment)
-//        }
-        binding?.cardJobPortal?.setOnClickListener { view:View ->
+
+        binding?.accomodationCard?.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.accomodation_fragment)
+        }
+
+        binding?.cardJobPortal?.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.job_fragment)
         }
         val view = binding?.root
-        return view!!// inflater.inflate(R.layout.fragment_home_scrn, container, false)
+        return view!!
     }
 
     override fun onDestroyView() {

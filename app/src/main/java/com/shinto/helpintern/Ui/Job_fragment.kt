@@ -54,13 +54,11 @@ class Job_fragment : Fragment() {
     private fun job_list_adapter(jobResponse: List<JobListDataClass>?, context: Context?) {
         joblistAdapter = HelpInternrecycler(jobResponse, context)
         binding.jobRecycler.adapter = joblistAdapter
-        binding.apply {
-            jobRecycler.apply {
+        binding.jobRecycler.apply {
                 setHasFixedSize(true)
                 setItemViewCacheSize(13)
                 adapter = joblistAdapter
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            }
         }
     }
 

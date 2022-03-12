@@ -23,11 +23,11 @@
         <entry key="app/src/main/res/drawable/round_btn.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/username.xml" value="0.1335" />
         <entry key="app/src/main/res/layout-v23/fragment_singin_fragment.xml" value="0.19479166666666667" />
-        <entry key="app/src/main/res/layout/accomodation_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/accomodation_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/accomodation_card_view.xml" value="0.16032492518170158" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_accomodation_description.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_accomodation_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_accomodation_fragment.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_home_scrn.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_job_fragment.xml" value="0.33" />

@@ -127,20 +127,20 @@ class signup : Fragment() {
         })
     }
 
-    private fun usernameFocusChangeListner() {
-        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                _binding!!.userContainer.helperText = validUser()
-            }
-        }
-    }
+//    private fun usernameFocusChangeListner() {
+//        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
+//            if (!focused) {
+//                _binding!!.userContainer.helperText = validUser()
+//            }
+//        }
+//    }
 
-    private fun validUser(): String? {
-        val emailText = _binding?.userEditText?.text.toString()
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-            return "Invalid user Address"
-        }
-        return null
-    }
+//    private fun validUser(): String? {
+//        val emailText = _binding?.userEditText?.text.toString()
+//        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
+//            return "Invalid user Address"
+//        }
+//        return null
+//    }
 
 }

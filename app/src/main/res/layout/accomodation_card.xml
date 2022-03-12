@@ -56,7 +56,7 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/headingTxt"
+                    android:id="@+id/hotelHeadingTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Microsoft"
@@ -64,7 +64,7 @@
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/designationTxt"
+                    android:id="@+id/hotelDesignationTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Senior UI Designer"
@@ -110,7 +110,7 @@
                         android:textColor="@color/white"
                         android:textSize="18sp" />
                     <TextView
-                        android:id="@+id/minmWageTxt"
+                        android:id="@+id/minmFairTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=" 800"
