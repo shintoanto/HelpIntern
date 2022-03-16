@@ -2,7 +2,6 @@ package com.shinto.helpintern.Ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shinto.helpintern.Data.Get.JobListDataClass
@@ -17,8 +17,6 @@ import com.shinto.helpintern.HelpInternrecycler
 import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.Model.ViewModelFactory
-import com.shinto.helpintern.R
-import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.FragmentJobFragmentBinding
 
 class Job_fragment : Fragment() {
@@ -43,7 +41,7 @@ class Job_fragment : Fragment() {
                 response.body().let { jobResponse ->
                     //joblistAdapter = HelpInternrecycler(jobResponse,context)
                     // joblistAdapter.differ.submitList(jobResponse)
-                    job_list_adapter(jobResponse, context)
+                    job_list_adapter(jobResponse, context,navController)
                 }
             }else{
                 showProgressBar()
@@ -51,11 +49,14 @@ class Job_fragment : Fragment() {
 
         })
         joblistAdapter.setItemClickListner {
-            findNavController().navigate()
+
         }
 
 
         return binding.root
+    }
+    private fun navigate(it:JobListDataClass){
+        val action:NavDirections = Job_fragmentDi.action_job_fragment_to_jobs_description_fragment
     }
 
     private fun showProgressBar() {
@@ -66,8 +67,12 @@ class Job_fragment : Fragment() {
         _binding.progBar.visibility = View.INVISIBLE
     }
 
-    private fun job_list_adapter(jobResponse: List<JobListDataClass>?, context: Context?) {
-        joblistAdapter = HelpInternrecycler(jobResponse, context)
+    private fun job_list_adapter(
+        jobResponse: List<JobListDataClass>?,
+        context: Context?,
+        navController: NavController
+    ) {
+        joblistAdapter = HelpInternrecycler(jobResponse, context,navController)
         binding.jobRecycler.adapter = joblistAdapter
         binding.jobRecycler.apply {
             setHasFixedSize(true)

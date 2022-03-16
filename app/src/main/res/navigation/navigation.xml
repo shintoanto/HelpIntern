@@ -36,7 +36,11 @@
         android:id="@+id/job_fragment"
         android:name="com.shinto.helpintern.Ui.Job_fragment"
         android:label="fragment_job_fragment"
-        tools:layout="@layout/fragment_job_fragment" />
+        tools:layout="@layout/fragment_job_fragment" >
+        <action
+            android:id="@+id/action_job_fragment_to_jobs_description_fragment"
+            app:destination="@id/jobs_description_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/jobs_description_fragment"
         android:name="com.shinto.helpintern.Ui.jobs_description_fragment"
