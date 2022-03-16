@@ -94,7 +94,7 @@
                 android:id="@+id/usrEdtext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberPassword"
+                android:inputType="text"
                 android:maxLength="16" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,7 +151,7 @@
                 android:id="@+id/passwordEditext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="numberPassword"
                 android:maxLength="16" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -223,7 +223,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_vector_21" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

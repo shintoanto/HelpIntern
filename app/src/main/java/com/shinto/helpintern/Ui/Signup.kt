@@ -78,9 +78,8 @@ class signup : Fragment() {
         emailFocusChangeListner()
         passwordFocusChangeListner()
         latName()
-        userName()
         firsName()
-        phoneNumber()
+        phoneNumberChangeListner()
         //  usernameFocusChangeListner()
 
         return binding.root
@@ -94,34 +93,29 @@ class signup : Fragment() {
     }
 
 
-    private fun userName() {
-        _binding.usrEdtext.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                _binding.usrContainer.helperText = usrName()
-            }
-        }
-    }
-    private fun usrName(): CharSequence? {
-      val userName =  _binding.usrEdtext.text.toString()
-        if (userName.isEmpty()){
+    private fun userName(): CharSequence? {
+        val userName = _binding.usrEdtext.text.toString()
+        if (userName.isEmpty()) {
             _binding.usrContainer.error = "Enter your user name"
         }
-       return "Enter user  name"
+        return "Enter user  name"
     }
+
     private fun firsName() {
         _binding.usrEdtext.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                _binding.usrContainer.helperText = firtName()
+                _binding.usrContainer.helperText = userName()
             }
         }
     }
-    private fun firtName(): CharSequence? {
-        val userName =  _binding.firstEditxt.text.toString()
-        if (userName.isEmpty()){
+
+    private fun firtName() {
+        val userName = _binding.firstEditxt.text.toString()
+        if (userName.isEmpty()) {
             _binding.usrContainer.error = "Enter your first name"
         }
-        return "Enter your first name"
     }
+
     private fun latName() {
         _binding.lastEdtTxt.setOnFocusChangeListener { _, focused ->
             if (!focused) {
@@ -129,28 +123,36 @@ class signup : Fragment() {
             }
         }
     }
+
     private fun lasName(): CharSequence? {
-        val userName =  _binding.lastEdtTxt.text.toString()
-        if (userName.isEmpty()){
+        val userName = _binding.lastEdtTxt.text.toString()
+        if (userName.isEmpty()) {
             _binding.lastNameContainer.error = "Enter your first name"
         }
         return "Enter your last name"
     }
 
+    private fun phoneNumberChangeListner() {
+        _binding.phNumEdtTxt.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                _binding.phNumContainer.helperText = phoneNumber()
+            }
+        }
+    }
 
 
-
-    private fun phoneNumber() {
+    private fun phoneNumber(): CharSequence? {
         val phone = _binding.phNumEdtTxt.text.toString()
         if (phone.matches(".*[0-9]".toRegex())) {
             _binding.phNumContainer.error = "Enter your valid phone number"
         }
-        if (phone.isNullOrEmpty()) {
+        if (phone.isEmpty()) {
             _binding.phNumContainer.error = "This field is required"
         }
         if (phone.length != 10) {
             _binding.phNumContainer.error = "Enter 10 fields"
         }
+        return null
     }
 
     private fun emailFocusChangeListner() {

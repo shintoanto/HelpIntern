@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/textView15"
-            android:layout_width="208dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Choose your Accomodation"
             android:textColor="@color/black"

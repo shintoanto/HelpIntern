@@ -19,7 +19,6 @@ import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 class singin_fragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
-
     private var _binding: FragmentSinginFragmentBinding? = null
     private val binding get() = _binding
 
@@ -49,13 +48,15 @@ class singin_fragment : Fragment() {
         binding?.imgSignIn?.setOnClickListener {
             view?.findNavController()?.navigate(R.id.home_scrn)
         }
+        binding?.singUpBtn?.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.signup)
+        }
         emailFocusChangeListner()
         passwordFocusChangeListner()
 
 
-        val view = binding?.root
-        return view!!
-        //inflater.inflate(R.layout.fragment_singin_fragment, container, false)
+
+        return binding?.root!!
     }
 
     private fun emailFocusChangeListner() {
