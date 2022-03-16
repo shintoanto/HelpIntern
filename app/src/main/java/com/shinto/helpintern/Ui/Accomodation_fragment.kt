@@ -40,16 +40,27 @@ class accomodation_fragment : Fragment() {
 
         viewModel.accomodationResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
+                showProgressBar()
                 response.body()?.let { accomodationResponse ->
+                    hideProgressBar()
                     Log.d("Adap",accomodationResponse.toString())
                     accomodationListAdapterSet(context, accomodationResponse)
                 }
+            }else{
+                showProgressBar()
             }
         })
 
         // Inflate the layout for this fragment
         val view = binding.root
         return view
+    }
+    private fun showProgressBar() {
+        _binding.progBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        _binding.progBar.visibility = View.INVISIBLE
     }
 
     private fun accomodationListAdapterSet(

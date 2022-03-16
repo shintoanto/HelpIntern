@@ -4,8 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.R
 import kotlin.coroutines.coroutineContext
@@ -19,6 +22,7 @@ class AccomodationAdapter(
         val accomHeading = view.findViewById<TextView>(R.id.hotelHeadingTxt)
         val accomPlace = view.findViewById<TextView>(R.id.hotelDesignationTxt)
         val accomFair = view.findViewById<TextView>(R.id.minmFairTxt)
+        val accomPIc =view.findViewById<ImageView>(R.id.accomPic)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Accomodationadapter {
@@ -30,6 +34,12 @@ class AccomodationAdapter(
         holder.accomHeading.text = accomodationResponse[position].name
         holder.accomPlace.text = accomodationResponse[position].city
         holder.accomFair.text = accomodationResponse[position].rent_amount.toString()
+        if (context != null) {
+            Glide.with(context).load(accomodationResponse[position].cover_photo)
+                .apply(RequestOptions().placeholder(R.drawable.home_24).centerCrop()).into(holder.accomPIc)
+        }
+//        Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/w500${imageDiff.poster_path}").
+//        into(holder.accomPIc)
     }
 
     override fun getItemCount(): Int = accomodationResponse.size

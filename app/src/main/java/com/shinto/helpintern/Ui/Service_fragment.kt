@@ -46,8 +46,9 @@ class Service_fragment : Fragment() {
         viewModel.userList()
         viewModel.serviceResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
-                hideProgressBar()
+                showProgressBar()
                 response.body().let { serviceResponse ->
+                    hideProgressBar()
                     //joblistAdapter = HelpInternrecycler(jobResponse,context)
                     // joblistAdapter.differ.submitList(jobResponse)
                     service_list_adapter(serviceResponse, context)
@@ -61,11 +62,11 @@ class Service_fragment : Fragment() {
     }
 
     private fun showProgressBar() {
-        _binding.progBar.visibility = View.VISIBLE
+        _binding.progBa.visibility = View.VISIBLE
     }
 
     private fun hideProgressBar() {
-        _binding.progBar.visibility = View.INVISIBLE
+        _binding.progBa.visibility = View.INVISIBLE
     }
 
     private fun service_list_adapter(serviceResponse: List<ServiceListItem>?, context: Context?) {

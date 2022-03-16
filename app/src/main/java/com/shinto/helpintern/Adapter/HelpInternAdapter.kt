@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintSet
@@ -61,6 +62,7 @@ class HelpInternrecycler(
         holder.designation.text = jobResponse?.get(position)?.designation
         // holder.tenTxt.text = jobResponse?.get(position)?.provider.toString()
         holder.minimumWage.text = jobResponse?.get(position)?.minimum_wage.toString()
+        holder.jobCard
         holder.jobCard.setOnClickListener {
          //  val navController = findNavController()
         }

@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     android:background="#F6F6F6">
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/progBar"
-        android:indeterminate="true"
-        android:visibility="visible"
-        android:indeterminateTint="#850D0D"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -82,10 +71,21 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/jobRecycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="574dp"
             android:background="@color/white" />
+
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="#CA10DF"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

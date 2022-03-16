@@ -37,14 +37,15 @@ class Job_fragment : Fragment() {
         viewModel.getJobList()
         viewModel.joblistResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
-                //showProgressBar()
+                showProgressBar()
                 response.body().let { jobResponse ->
+                    hideProgressBar()
                     //joblistAdapter = HelpInternrecycler(jobResponse,context)
                     // joblistAdapter.differ.submitList(jobResponse)
                     job_list_adapter(jobResponse, context,navController)
                 }
             }else{
-
+                showProgressBar()
             }
 
         })
@@ -59,9 +60,9 @@ class Job_fragment : Fragment() {
 //        val action:NavDirections = Job_fragmentDi.action_job_fragment_to_jobs_description_fragment
 //    }
 
-//    private fun showProgressBar() {
-//        _binding.progBar.visibility = View.VISIBLE
-//    }
+    private fun showProgressBar() {
+        _binding.progBar.visibility = View.VISIBLE
+    }
 
     private fun hideProgressBar() {
         _binding.progBar.visibility = View.INVISIBLE
