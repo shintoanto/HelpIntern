@@ -50,9 +50,9 @@ class Job_fragment : Fragment() {
             }
 
         })
-//        joblistAdapter.setItemClickListner {
-//            findNavController().navigate()
-//        }
+        joblistAdapter.setItemClickListner {
+            findNavController().navigate()
+        }
 
 
         return binding.root
