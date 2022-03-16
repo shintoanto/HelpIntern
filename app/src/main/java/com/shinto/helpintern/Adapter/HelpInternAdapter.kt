@@ -62,7 +62,7 @@ class HelpInternrecycler(
         // holder.tenTxt.text = jobResponse?.get(position)?.provider.toString()
         holder.minimumWage.text = jobResponse?.get(position)?.minimum_wage.toString()
         holder.jobCard.setOnClickListener {
-           val navController = findNavController()
+         //  val navController = findNavController()
         }
         holder.itemView.setOnClickListener{
 

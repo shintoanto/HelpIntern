@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:background="#F6F6F6">
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progBar"
-        style="?android:attr/progressBarStyle"
-        android:visibility="gone"
+        android:indeterminate="true"
+        android:visibility="visible"
+        android:indeterminateTint="#850D0D"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
