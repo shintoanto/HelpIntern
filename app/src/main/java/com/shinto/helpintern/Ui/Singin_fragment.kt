@@ -51,15 +51,7 @@ class singin_fragment : Fragment() {
         }
         emailFocusChangeListner()
         passwordFocusChangeListner()
-        val em = "shinto@gmail.com"
-        val pas = "123"
-        val email = binding?.emailEditext?.text.toString()
-        val pass = binding?.passwordEditext?.text.toString()
-        if (email == em && pass == pas) {
-            view?.findNavController()?.navigate(R.id.home_scrn)
-        } else {
-            Log.d("res", "the")
-        }
+
 
         val view = binding?.root
         return view!!
@@ -106,6 +98,22 @@ class singin_fragment : Fragment() {
         }
         return null
     }
+
+//        private fun usernameFocusChangeListner() {
+//        _binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
+//            if (!focused) {
+//                _binding!!.emailContainer.helperText = validUser()
+//            }
+//        }
+//    }
+//
+//    private fun validUser(): String? {
+//        val emailText = _binding?.passwordEditext?.text.toString()
+//        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
+//            return "Invalid user Address"
+//        }
+//        return null
+//    }
 
     fun reload() {
         Log.d("res", "hail")

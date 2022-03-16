@@ -61,25 +61,25 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="121dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Jobs"
+            android:text="Service"
             android:layout_marginBottom="20dp"
             android:textColor="@color/black"
             android:textSize="34sp" />
 
         <TextView
             android:id="@+id/textView15"
-            android:layout_width="208dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choose your job"
+            android:text="Choose your service"
             android:textColor="@color/black"
             android:layout_marginBottom="20dp"
             android:textSize="22sp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/jobRecycler"
+            android:id="@+id/serviceRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white" />

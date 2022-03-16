@@ -55,7 +55,7 @@ class HelpInternrecycler(private val jobResponse: List<JobListDataClass>?, priva
 
     private var onItemClickListener: ((JobListDataClass) -> Unit)? = null
 
-    fun setOnClickListner(listener: (JobListDataClass) -> Unit) {
+    fun setItemClickListner(listener: (JobListDataClass) -> Unit) {
         onItemClickListener = listener
     }
 

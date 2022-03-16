@@ -35,6 +35,10 @@ class home_scrn : Fragment() {
         binding?.cardJobPortal?.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.job_fragment)
         }
+
+        binding?.cardView2?.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.service_fragment)
+        }
         val view = binding?.root
         return view!!
     }

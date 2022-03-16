@@ -3,9 +3,12 @@ package com.shinto.helpintern.Api
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Data.Post.UserRegistration
+import com.shinto.helpintern.Data.Get.ServiceListItem
+import com.shinto.helpintern.Data.Post.UserRegistrationResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface HelpInterApi {
@@ -15,9 +18,13 @@ interface HelpInterApi {
     @POST("user/register")
     suspend fun userRegister(
         @Body userRegistration: UserRegistration
-    ): Response<List<UserRegistration>>
-
+    ): Response<UserRegistrationResponse>
 
     @GET("user/accommodation-list-filter")
     suspend fun userAccomodationListApi(): Response<List<AccomodationDataClassItem>>
+
+    @GET("user/service-list-filter")
+    suspend fun serviceList(): Response<List<ServiceListItem>>
+
+
 }

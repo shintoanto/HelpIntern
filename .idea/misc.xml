@@ -37,6 +37,8 @@
         <entry key="app/src/main/res/layout/fragment_welcome_screen.xml" value="0.18" />
         <entry key="app/src/main/res/layout/jobscardview.xml" value="0.2" />
         <entry key="app/src/main/res/layout/layout_signin.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/service_fragment.xml" value="0.15989739204788372" />
+        <entry key="app/src/main/res/layout/servicecard.xml" value="0.15989739204788372" />
       </map>
     </option>
   </component>

@@ -41,7 +41,7 @@
         android:id="@+id/jobs_description_fragment"
         android:name="com.shinto.helpintern.Ui.jobs_description_fragment"
         android:label="fragment_jobs_description_fragment"
-        tools:layout="@layout/fragment_jobs_description_fragment" >
+        tools:layout="@layout/fragment_jobs_description_fragment">
         <argument
             android:name="JobList"
             app:argType="com.shinto.helpintern.Data.Get.JobListDataClass" />
@@ -55,10 +55,28 @@
         android:id="@+id/accomodation_fragment"
         android:name="com.shinto.helpintern.accomodation_fragment"
         android:label="fragment_accomodation_fragment"
-        tools:layout="@layout/fragment_accomodation_fragment" />
+        tools:layout="@layout/fragment_accomodation_fragment" >
+        <action
+            android:id="@+id/action_accomodation_fragment_to_home_scrn"
+            app:destination="@id/home_scrn" />
+    </fragment>
     <fragment
         android:id="@+id/home_scrn"
         android:name="com.shinto.helpintern.Ui.home_scrn"
         android:label="fragment_home_scrn"
-        tools:layout="@layout/fragment_home_scrn" />
+        tools:layout="@layout/fragment_home_scrn">
+        <action
+            android:id="@+id/action_home_scrn_to_job_fragment"
+            app:destination="@id/job_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/service_fragment"
+        android:name="com.shinto.helpintern.Ui.Service_fragment"
+        android:label="service_fragment"
+        tools:layout="@layout/service_fragment" >
+        <action
+            android:id="@+id/action_service_fragment_to_home_scrn"
+            app:destination="@id/home_scrn" />
+    </fragment>
+
 </navigation>

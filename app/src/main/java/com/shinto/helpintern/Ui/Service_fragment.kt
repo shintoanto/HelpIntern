@@ -3,57 +3,59 @@ package com.shinto.helpintern.Ui
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.shinto.helpintern.Data.Get.JobListDataClass
-import com.shinto.helpintern.HelpInternrecycler
+import com.shinto.helpintern.Adapter.ServiceAdapter
+import com.shinto.helpintern.Data.Get.ServiceListItem
 import com.shinto.helpintern.MainViewModel
-import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.Model.ViewModelFactory
-import com.shinto.helpintern.R
+import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.Resource
-import com.shinto.helpintern.databinding.FragmentJobFragmentBinding
+import com.shinto.helpintern.databinding.ServiceFragmentBinding
 
-class Job_fragment : Fragment() {
+class Service_fragment : Fragment() {
+
     lateinit var navController: NavController
-    lateinit var joblistAdapter: HelpInternrecycler
+    lateinit var serviceAdapter: ServiceAdapter
     private lateinit var viewModel: MainViewModel
-    lateinit var _binding: FragmentJobFragmentBinding
+    private lateinit var _binding: ServiceFragmentBinding
     private val binding get() = _binding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentJobFragmentBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
+        _binding = ServiceFragmentBinding.inflate(inflater, container, false)
+
         val repository = Repository()
         navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getJobList()
-        viewModel.joblistResponse.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.userList()
+        viewModel.serviceResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
                 hideProgressBar()
-                response.body().let { jobResponse ->
+                response.body().let { serviceResponse ->
                     //joblistAdapter = HelpInternrecycler(jobResponse,context)
                     // joblistAdapter.differ.submitList(jobResponse)
-                    job_list_adapter(jobResponse, context)
+                    service_list_adapter(serviceResponse, context)
                 }
-            }else{
+            } else {
                 showProgressBar()
             }
-
         })
-//        joblistAdapter.setItemClickListner {
-//            findNavController().navigate()
-//        }
-
 
         return binding.root
     }
@@ -66,20 +68,15 @@ class Job_fragment : Fragment() {
         _binding.progBar.visibility = View.INVISIBLE
     }
 
-    private fun job_list_adapter(jobResponse: List<JobListDataClass>?, context: Context?) {
-        joblistAdapter = HelpInternrecycler(jobResponse, context)
-        binding.jobRecycler.adapter = joblistAdapter
-        binding.jobRecycler.apply {
+    private fun service_list_adapter(serviceResponse: List<ServiceListItem>?, context: Context?) {
+        serviceAdapter = ServiceAdapter(serviceResponse, context)
+        binding.serviceRecycler.adapter = serviceAdapter
+        binding.serviceRecycler.apply {
             setHasFixedSize(true)
             setItemViewCacheSize(13)
-            adapter = joblistAdapter
+            adapter = serviceAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
     }
-
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
 
 }

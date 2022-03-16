@@ -51,26 +51,106 @@ class signup : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.registration(
             UserRegistration(
-                "$email",
-                "$firstName",
-                "$secondName",
-                "$password",
-                "$phoneNumber",
-                "$",
-                "$rePassword",
-                "$userName"
+                "shinto@ou.com",
+                "shinto",
+                "pa",
+                "9895",
+                "989513",
+                "htps",
+                "9895",
+                "shintopa"
             )
         )
+//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+//            if (response.isSuccessful) {
+//                Log.d("Res", response.body().toString())
+//                Log.d("Res", response.code().toString())
+//                Log.d("Res", response.message())
+//            } else {
+//                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+//                Log.d("Res", "Not working" + response.message())
+//            }
+//        })
 
-        binding.imgSignIn.setOnClickListener {
-            signUp()
-        }
+//        binding.imgSignIn.setOnClickListener {
+//            signUp()
+//        }
         emailFocusChangeListner()
         passwordFocusChangeListner()
+        latName()
+        userName()
+        firsName()
+        phoneNumber()
         //  usernameFocusChangeListner()
 
         return binding.root
         // inflater.inflate(R.layout.fragment_signup, container, false)
+    }
+
+    private fun name() {
+        _binding.firstEditxt.setOnClickListener {
+
+        }
+    }
+
+
+    private fun userName() {
+        _binding.usrEdtext.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                _binding.usrContainer.helperText = usrName()
+            }
+        }
+    }
+    private fun usrName(): CharSequence? {
+      val userName =  _binding.usrEdtext.text.toString()
+        if (userName.isEmpty()){
+            _binding.usrContainer.error = "Enter your user name"
+        }
+       return "Enter user  name"
+    }
+    private fun firsName() {
+        _binding.usrEdtext.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                _binding.usrContainer.helperText = firtName()
+            }
+        }
+    }
+    private fun firtName(): CharSequence? {
+        val userName =  _binding.firstEditxt.text.toString()
+        if (userName.isEmpty()){
+            _binding.usrContainer.error = "Enter your first name"
+        }
+        return "Enter your first name"
+    }
+    private fun latName() {
+        _binding.lastEdtTxt.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                _binding.lastNameContainer.helperText = lasName()
+            }
+        }
+    }
+    private fun lasName(): CharSequence? {
+        val userName =  _binding.lastEdtTxt.text.toString()
+        if (userName.isEmpty()){
+            _binding.lastNameContainer.error = "Enter your first name"
+        }
+        return "Enter your last name"
+    }
+
+
+
+
+    private fun phoneNumber() {
+        val phone = _binding.phNumEdtTxt.text.toString()
+        if (phone.matches(".*[0-9]".toRegex())) {
+            _binding.phNumContainer.error = "Enter your valid phone number"
+        }
+        if (phone.isNullOrEmpty()) {
+            _binding.phNumContainer.error = "This field is required"
+        }
+        if (phone.length != 10) {
+            _binding.phNumContainer.error = "Enter 10 fields"
+        }
     }
 
     private fun emailFocusChangeListner() {
@@ -114,18 +194,18 @@ class signup : Fragment() {
         return null
     }
 
-    private fun signUp() {
-        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
-            if (response.isSuccessful) {
-                Log.d("Res", response.body().toString())
-                Log.d("Res", response.code().toString())
-                Log.d("Res", response.message())
-            } else {
-                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
-                Log.d("Res", "Not working"+response.message())
-            }
-        })
-    }
+//    private fun signUp() {
+//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+//            if (response.isSuccessful) {
+//                Log.d("Res", response.body().toString())
+//                Log.d("Res", response.code().toString())
+//                Log.d("Res", response.message())
+//            } else {
+//                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+//                Log.d("Res", "Not working" + response.message())
+//            }
+//        })
+//    }
 
 //    private fun usernameFocusChangeListner() {
 //        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->
