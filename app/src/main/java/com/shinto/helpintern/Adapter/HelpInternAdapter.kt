@@ -58,10 +58,10 @@ class HelpInternrecycler(
     val differ = AsyncListDiffer(this, diffcallback)
 
     override fun onBindViewHolder(holder: HelpInternrecycler.HelpInternViewHolder, position: Int) {
-        holder.heading.text = jobResponse?.get(position)?.company_name
+        holder.heading.text = jobResponse?.get(position)?.companyName
         holder.designation.text = jobResponse?.get(position)?.designation
         // holder.tenTxt.text = jobResponse?.get(position)?.provider.toString()
-        holder.minimumWage.text = jobResponse?.get(position)?.minimum_wage.toString()
+        holder.minimumWage.text = jobResponse?.get(position)?.minimumWage.toString()
         holder.jobCard
         holder.jobCard.setOnClickListener {
          //  val navController = findNavController()

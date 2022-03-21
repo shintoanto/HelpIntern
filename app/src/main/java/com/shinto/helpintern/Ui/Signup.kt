@@ -28,6 +28,7 @@ import java.io.File
 import java.net.URI
 
 class signup : Fragment() {
+
     lateinit var _binding: FragmentSignupBinding
     private val binding get() = _binding
     private lateinit var viewModel: MainViewModel
@@ -36,7 +37,7 @@ class signup : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): ConstraintLayout {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
@@ -55,29 +56,28 @@ class signup : Fragment() {
         viewModel.registration(
             UserRegistration(
                 email = "shintopa@outlook.com",
-                first_name = "shinto",
-                last_name = "pa",
-                password = "9895",
-                phone_number = "9895137135",
-                repassword = "9895",
-                username = "shintopa"
+                firstName = "Shinto pa",
+                lastName = "P A",
+                phoneNumber = "9895137135",
+                password = "9539915795",
+                repassword = "9539915795",
+                username = "shinto"
             )
         )
-//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
-//            if (response.isSuccessful) {
-//                Log.d("Res", response.body().toString())
-//                Log.d("Res", response.code().toString())
-//                Log.d("Res", response.message())
-//            } else {
-//                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
-//                Log.d("Res", "Not working" + response.message())
-//            }
-//        })
-//
-//        binding.imgSignIn.setOnClickListener {
-//            signUp()
-//        }
+        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Res", response.body().toString())
+                Log.d("Res", response.code().toString())
+                Log.d("Res", response.message())
+            } else {
+                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+                Log.d("Res", "Not working" + response.message())
+            }
+        })
 
+        binding.imgSignIn.setOnClickListener {
+            signUp()
+        }
 
 
         emailFocusChangeListner()
@@ -213,18 +213,18 @@ class signup : Fragment() {
         return null
     }
 
-//    private fun signUp() {
-//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
-//            if (response.isSuccessful) {
-//                Log.d("Res", response.body().toString())
-//                Log.d("Res", response.code().toString())
-//                Log.d("Res", response.message())
-//            } else {
-//                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
-//                Log.d("Res", "Not working" + response.message())
-//            }
-//        })
-//    }
+    private fun signUp() {
+        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Res", response.body().toString())
+                Log.d("Res", response.code().toString())
+                Log.d("Res", response.message())
+            } else {
+                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+                Log.d("Res", "Not working" + response.message())
+            }
+        })
+    }
 
 //    private fun usernameFocusChangeListner() {
 //        _binding?.userEditText?.setOnFocusChangeListener { _, focused ->

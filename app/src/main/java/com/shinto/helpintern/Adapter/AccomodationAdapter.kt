@@ -33,9 +33,9 @@ class AccomodationAdapter(
     override fun onBindViewHolder(holder: Accomodationadapter, position: Int) {
         holder.accomHeading.text = accomodationResponse[position].name
         holder.accomPlace.text = accomodationResponse[position].city
-        holder.accomFair.text = accomodationResponse[position].rent_amount.toString()
+        holder.accomFair.text = accomodationResponse[position].rentAmount.toString()
         if (context != null) {
-            Glide.with(context).load(accomodationResponse[position].cover_photo)
+            Glide.with(context).load(accomodationResponse[position].coverPhoto)
                 .apply(RequestOptions().placeholder(R.drawable.home_24).centerCrop()).into(holder.accomPIc)
         }
 //        Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/w500${imageDiff.poster_path}").

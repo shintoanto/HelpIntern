@@ -33,7 +33,7 @@ class home_scrn : Fragment() {
         }
 
         binding?.cardJobPortal?.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.job_fragment)
+            view.findNavController().navigate()
         }
 
         binding?.cardView2?.setOnClickListener { view: View ->

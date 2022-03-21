@@ -16,8 +16,8 @@ import retrofit2.Response
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
     var joblistResponse: MutableLiveData<Response<List<JobListDataClass>>> = MutableLiveData()
-
-    // var registerResponse: MutableLiveData<Response<List<UserRegistration>>> = MutableLiveData()
+    var registerResponse: MutableLiveData<Response<List<UserRegistration>>> =
+        MutableLiveData()
     val accomodationResponse: MutableLiveData<Response<List<AccomodationDataClassItem>>> =
         MutableLiveData()
     val serviceResponse: MutableLiveData<Response<List<ServiceListItem>>> = MutableLiveData()
@@ -43,7 +43,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             val response: Response<UserRegistrationResponse> =
                 repository.postUserRegistration(userRegistration)
             if (response.isSuccessful) {
-                response.body()?.toString()?.let { Log.d("Nam", it) }
+                Log.d("Nam", response.toString())
             } else {
                 Log.d("Nam", "error")
             }
