@@ -48,6 +48,15 @@
                 android:src="@drawable/ic_message_black" />
         </LinearLayout>
 
+        <SearchView
+            android:id="@+id/servSearch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <ListView
+            android:id="@+id/ser_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
@@ -72,6 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white" />
+
+
     </LinearLayout>
 
     <ProgressBar
@@ -84,6 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
         app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

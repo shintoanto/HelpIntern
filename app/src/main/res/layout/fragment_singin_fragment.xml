@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -68,10 +67,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Password"
-            app:helperText=""
-            app:helperTextTextColor="#F2E40F0F"
             app:counterEnabled="true"
             app:counterMaxLength="16"
+            app:helperText=""
+            app:helperTextTextColor="#F2E40F0F"
             app:passwordToggleEnabled="true"
             app:startIconContentDescription="passwordlicon"
             app:startIconDrawable="@drawable/passicon">
@@ -127,7 +126,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_vector_21" />
 
-    <Button
+    <TextView
         android:id="@+id/singin_btn"
         style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
@@ -136,19 +135,22 @@
         android:layout_marginBottom="5dp"
         android:text="Don't have an account?"
         android:textAppearance="?attr/textAppearanceButton"
-        android:textColor="@color/black"
+        android:textColor="#A8191818"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/singUp_btn"
         style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="95dp"
         android:text="SignUp"
+        android:textSize="12dp"
         android:textAppearance="?attr/textAppearanceButton"
-        android:textColor="@color/black"
+        android:textColor="#A8191818"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"

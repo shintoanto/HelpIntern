@@ -12,6 +12,7 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface HelpInterApi {
+
     @GET("user/job-list")
     suspend fun JobList(): Response<List<JobListDataClass>>
 
@@ -25,6 +26,5 @@ interface HelpInterApi {
 
     @GET("user/service-list-filter")
     suspend fun serviceList(): Response<List<ServiceListItem>>
-
 
 }

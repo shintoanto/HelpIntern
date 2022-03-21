@@ -82,5 +82,10 @@
             android:id="@+id/action_service_fragment_to_home_scrn"
             app:destination="@id/home_scrn" />
     </fragment>
+    <fragment
+        android:id="@+id/serviceDescription"
+        android:name="com.shinto.helpintern.serviceDescription"
+        android:label="service_description"
+        tools:layout="@layout/service_description" />
 
 </navigation>

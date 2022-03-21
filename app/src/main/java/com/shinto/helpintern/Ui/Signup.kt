@@ -1,5 +1,6 @@
 package com.shinto.helpintern.Ui
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -7,7 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,16 +24,14 @@ import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.databinding.FragmentSignupBinding
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
+import java.io.File
+import java.net.URI
 
 class signup : Fragment() {
     lateinit var _binding: FragmentSignupBinding
     private val binding get() = _binding
     private lateinit var viewModel: MainViewModel
     lateinit var navController: NavController
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,14 +54,13 @@ class signup : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.registration(
             UserRegistration(
-                "shinto@ou.com",
-                "shinto",
-                "pa",
-                "9895",
-                "989513",
-                "htps",
-                "9895",
-                "shintopa"
+                email = "shintopa@outlook.com",
+                first_name = "shinto",
+                last_name = "pa",
+                password = "9895",
+                phone_number = "9895137135",
+                repassword = "9895",
+                username = "shintopa"
             )
         )
 //        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
@@ -71,20 +73,35 @@ class signup : Fragment() {
 //                Log.d("Res", "Not working" + response.message())
 //            }
 //        })
-
+//
 //        binding.imgSignIn.setOnClickListener {
 //            signUp()
 //        }
+
+
+
         emailFocusChangeListner()
         passwordFocusChangeListner()
         latName()
         firsName()
         phoneNumberChangeListner()
-        //  usernameFocusChangeListner()
+        binding.registerImageBtn.setOnClickListener {
+            regristerProfilePictureFun()
+        }
 
         return binding.root
-        // inflater.inflate(R.layout.fragment_signup, container, false)
     }
+
+    private fun regristerProfilePictureFun() {
+        val registerImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                binding.registerImg.setImageURI(it!!)
+            }
+        )
+        registerImage.launch("image/*")
+    }
+
 
     private fun name() {
         _binding.firstEditxt.setOnClickListener {

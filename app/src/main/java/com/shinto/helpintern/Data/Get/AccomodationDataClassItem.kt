@@ -1,24 +1,24 @@
 package com.shinto.helpintern.Data.Get
 
 data class AccomodationDataClassItem(
-    val accommodation_type: String,
-    val beds_available: Int,
+    val accommodationType: String,
+    val bedsAvailable: Int,
     val city: String,
     val country: String,
-    val cover_photo: String,
-    val created_at: String,
+    val coverPhoto: String,
+    val createdAt: String,
     val id: Int,
-    val is_available: Boolean,
-    val is_heating: Boolean,
-    val is_parking: Boolean,
-    val is_smoking: Boolean,
-    val is_wifi: Boolean,
+    val isAvailable: Boolean,
+    val isHeating: Boolean,
+    val isParking: Boolean,
+    val isSmoking: Boolean,
+    val isWifi: Boolean,
     val name: String,
-    val phone_number: Int,
+    val phoneNumber: Int,
     val province: String,
-    val rent_amount: Int,
+    val rentAmount: Int,
     val street: String,
-    val updated_at: String,
-    val user_id: Int,
-    val zip_code: Int
+    val updatedAt: String,
+    val userId: Int,
+    val zipCode: Int
 )
