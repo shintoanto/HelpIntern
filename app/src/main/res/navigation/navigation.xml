@@ -72,6 +72,12 @@
         <action
             android:id="@+id/action_home_scrn_to_job_fragment"
             app:destination="@id/job_fragment" />
+        <action
+            android:id="@+id/action_home_scrn_to_accomodation_fragment"
+            app:destination="@id/accomodation_fragment" />
+        <action
+            android:id="@+id/action_home_scrn_to_service_fragment"
+            app:destination="@id/service_fragment" />
     </fragment>
     <fragment
         android:id="@+id/service_fragment"
@@ -81,11 +87,18 @@
         <action
             android:id="@+id/action_service_fragment_to_home_scrn"
             app:destination="@id/home_scrn" />
+        <action
+            android:id="@+id/action_service_fragment_to_serviceDescription"
+            app:destination="@id/serviceDescription" />
     </fragment>
     <fragment
         android:id="@+id/serviceDescription"
         android:name="com.shinto.helpintern.serviceDescription"
         android:label="service_description"
-        tools:layout="@layout/service_description" />
+        tools:layout="@layout/service_description" >
+        <argument
+            android:name="serviceDescriptionArgs"
+            app:argType="com.shinto.helpintern.Data.Get.ServiceListItem" />
+    </fragment>
 
 </navigation>

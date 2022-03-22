@@ -31,10 +31,6 @@ class Service_fragment : Fragment() {
     private lateinit var _binding: ServiceFragmentBinding
     private val binding get() = _binding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -83,6 +79,13 @@ class Service_fragment : Fragment() {
 //            }
 //
 //        })
+        serviceAdapter.setItemClickListener {
+//            findNavController().navigate(
+//                Service_fragmentDirections.actionServiceFragmentToServiceDescription(
+//                    it
+//                )
+//            )
+        }
 
         return binding.root
     }

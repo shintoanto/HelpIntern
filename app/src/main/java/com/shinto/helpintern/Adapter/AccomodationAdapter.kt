@@ -22,7 +22,8 @@ class AccomodationAdapter(
         val accomHeading = view.findViewById<TextView>(R.id.hotelHeadingTxt)
         val accomPlace = view.findViewById<TextView>(R.id.hotelDesignationTxt)
         val accomFair = view.findViewById<TextView>(R.id.minmFairTxt)
-        val accomPIc =view.findViewById<ImageView>(R.id.accomPic)
+        val accomPIc = view.findViewById<ImageView>(R.id.accomPic)
+        val accomParkingIcon = view.findViewById<ImageView>(R.id.parkingImg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Accomodationadapter {
@@ -34,10 +35,17 @@ class AccomodationAdapter(
         holder.accomHeading.text = accomodationResponse[position].name
         holder.accomPlace.text = accomodationResponse[position].city
         holder.accomFair.text = accomodationResponse[position].rentAmount.toString()
-        if (context != null) {
-            Glide.with(context).load(accomodationResponse[position].coverPhoto)
-                .apply(RequestOptions().placeholder(R.drawable.home_24).centerCrop()).into(holder.accomPIc)
+        if (accomodationResponse[position].isHeating) context?.let {
+            Glide.with(it)
+                .load(accomodationResponse[position].isHeating)
+                .apply(RequestOptions().placeholder(R.drawable.parking_24).centerCrop())
+                .into(holder.accomParkingIcon)
         }
+
+        if (context != null) Glide.with(context).load(accomodationResponse[position].coverPhoto)
+            .apply(RequestOptions().placeholder(R.drawable.home_24).centerCrop())
+            .into(holder.accomPIc)
+
 //        Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/w500${imageDiff.poster_path}").
 //        into(holder.accomPIc)
     }

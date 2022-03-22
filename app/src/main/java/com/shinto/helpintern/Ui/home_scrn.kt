@@ -28,17 +28,19 @@ class home_scrn : Fragment() {
         _binding = FragmentHomeScrnBinding.inflate(inflater, container, false)
 //        // Inflate the layout for this fragment
 
-        binding?.accomodationCard?.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.accomodation_fragment)
+        binding?.accomodationCard?.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(R.id.accomodation_fragment)
         }
 
         binding?.cardJobPortal?.setOnClickListener { view: View ->
-            view.findNavController().navigate()
+            view.findNavController().navigate(R.id.job_fragment)
         }
 
         binding?.cardView2?.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.service_fragment)
         }
+
         val view = binding?.root
         return view!!
     }

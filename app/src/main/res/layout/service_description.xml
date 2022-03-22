@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#F6F6F6"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F6F6F6">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -62,8 +61,7 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -80,26 +78,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Plumber"
-            android:textSize="20dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Plumping"
-            android:textSize="20dp"
             android:textColor="@color/black"
+            android:textSize="20dp"
             tools:layout_editor_absoluteX="-4dp"
             tools:layout_editor_absoluteY="477dp" />
 
         <TextView
             android:id="@+id/textView12"
-            android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="700 minimum wage"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20dp" />
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -133,8 +131,8 @@
         android:id="@+id/cardV"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginStart="10dp"
         android:layout_margin="25dp"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:elevation="8dp"
         app:cardCornerRadius="40dp"
@@ -144,13 +142,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <LinearLayout
-            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
+                android:id="@+id/service_Discription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lore_ip"
@@ -164,8 +163,8 @@
         android:id="@+id/button"
         android:layout_width="157dp"
         android:layout_height="63dp"
-        android:text="Apply"
         android:background="@drawable/btn_style"
+        android:text="Apply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

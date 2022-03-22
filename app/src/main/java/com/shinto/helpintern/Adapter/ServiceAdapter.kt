@@ -15,7 +15,7 @@ class ServiceAdapter(
 ) : RecyclerView.Adapter<ServiceAdapter.Servicesadapter>() {
 
     inner class Servicesadapter(view: View) : RecyclerView.ViewHolder(view) {
-        val serviseHeading = view.findViewById<TextView>(R.id.serviceHeadingTxt)
+        val serviceHeading = view.findViewById<TextView>(R.id.serviceHeadingTxt)
         val servicePlace = view.findViewById<TextView>(R.id.serviceDesignationTxt)
         val serviceFair = view.findViewById<TextView>(R.id.minmFairTxt)
     }
@@ -26,9 +26,18 @@ class ServiceAdapter(
     }
 
     override fun onBindViewHolder(holder: Servicesadapter, position: Int) {
-        holder.serviseHeading.text = ServiceResponse?.get(position)?.city
+        holder.serviceHeading.text = ServiceResponse?.get(position)?.city
         holder.servicePlace.text = ServiceResponse?.get(position)?.country.toString()
         holder.serviceFair.text = ServiceResponse?.get(position)?.province.toString()
+        holder.itemView.setOnClickListener {
+
+        }
+    }
+
+    private var onItemClickListener: ((ServiceListItem) -> Unit)? = null
+
+    fun setItemClickListener(listener: (ServiceListItem) -> Unit) {
+        onItemClickListener = listener
     }
 
     override fun getItemCount(): Int = ServiceResponse?.size!!
