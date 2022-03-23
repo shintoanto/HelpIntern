@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/layout/accomodation_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/accomodation_card_view.xml" value="0.16032492518170158" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.15989739204788372" />
         <entry key="app/src/main/res/layout/fragment_accomodation_description.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_accomodation_fragment.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22" />

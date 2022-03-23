@@ -1,5 +1,6 @@
 package com.shinto.helpintern.Ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.shinto.helpintern.Map.MapsActivity
 import com.shinto.helpintern.R
 import com.shinto.helpintern.databinding.FragmentHomeScrnBinding
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
@@ -39,6 +41,10 @@ class home_scrn : Fragment() {
 
         binding?.cardView2?.setOnClickListener { view: View ->
             view.findNavController().navigate(home_scrnDirections.actionHomeScrnToServiceFragment())
+        }
+        binding?.mapBtn?.setOnClickListener {
+            val intent = Intent(context, MapsActivity::class.java)
+            startActivity(intent)
         }
 
 
