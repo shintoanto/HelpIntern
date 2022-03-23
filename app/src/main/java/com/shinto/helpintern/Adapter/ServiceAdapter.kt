@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.shinto.helpintern.Data.Get.ServiceListItem
 import com.shinto.helpintern.R
 
 class ServiceAdapter(
     private val ServiceResponse: List<ServiceListItem>?,
-    private val context: Context?
+    private val context: Context?,
+    navController: NavController
 ) : RecyclerView.Adapter<ServiceAdapter.Servicesadapter>() {
 
     inner class Servicesadapter(view: View) : RecyclerView.ViewHolder(view) {

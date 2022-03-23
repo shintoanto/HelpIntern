@@ -30,19 +30,19 @@ class home_scrn : Fragment() {
 
         binding?.accomodationCard?.setOnClickListener { view: View ->
             view.findNavController()
-                .navigate(R.id.accomodation_fragment)
+                .navigate(home_scrnDirections.actionHomeScrnToAccomodationFragment())
         }
 
         binding?.cardJobPortal?.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.job_fragment)
+            view.findNavController().navigate(home_scrnDirections.actionHomeScrnToJobFragment())
         }
 
         binding?.cardView2?.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.service_fragment)
+            view.findNavController().navigate(home_scrnDirections.actionHomeScrnToServiceFragment())
         }
 
-        val view = binding?.root
-        return view!!
+
+        return binding?.root!!
     }
 
     override fun onDestroyView() {

@@ -70,7 +70,7 @@ class signup : Fragment() {
                 Log.d("Res", response.code().toString())
                 Log.d("Res", response.message())
             } else {
-                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+                //   Toast.makeText(con text, response.code(), Toast.LENGTH_LONG).show()
                 Log.d("Res", "Not working" + response.message())
             }
         })
@@ -78,7 +78,6 @@ class signup : Fragment() {
         binding.imgSignIn.setOnClickListener {
             signUp()
         }
-
 
         emailFocusChangeListner()
         passwordFocusChangeListner()

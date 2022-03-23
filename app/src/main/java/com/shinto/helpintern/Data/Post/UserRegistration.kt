@@ -8,7 +8,7 @@ data class UserRegistration(
     val lastName: String,
     val password: String,
     val phoneNumber: String,
-    val profilePicture: File,
+  //  val profilePicture: File,
     val repassword: String,
     val username: String
 )

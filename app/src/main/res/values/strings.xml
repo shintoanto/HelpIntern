@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="underlined_text"><u>I\'m underlined</u></string>
     <string name="lore_ip">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

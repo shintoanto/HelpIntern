@@ -2,14 +2,10 @@ package com.shinto.helpintern.Ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.SearchView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -20,7 +16,6 @@ import com.shinto.helpintern.Data.Get.ServiceListItem
 import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.Repository.Repository
-import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.ServiceFragmentBinding
 
 class Service_fragment : Fragment() {
@@ -50,12 +45,28 @@ class Service_fragment : Fragment() {
                     hideProgressBar()
                     //joblistAdapter = HelpInternrecycler(jobResponse,context)
                     // joblistAdapter.differ.submitList(jobResponse)
-                    service_list_adapter(serviceResponse, context)
+
+                    serviceAdapter = ServiceAdapter(serviceResponse, context,navController)
+                    binding.serviceRecycler.adapter = serviceAdapter
+                    binding.serviceRecycler.apply {
+                        setHasFixedSize(true)
+                        setItemViewCacheSize(13)
+                        adapter = serviceAdapter
+                        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    }
                 }
             } else {
                 showProgressBar()
             }
         })
+
+        serviceAdapter.setItemClickListener {
+            findNavController().navigate(
+                Service_fragmentDirections.actionServiceFragmentToServiceDescription(
+                    it
+                )
+            )
+        }
 
 //        val names = arrayOf("android", "gtech", "samsunt")
 //        val adapter: ArrayAdapter<String> = ArrayAdapter(
@@ -79,13 +90,9 @@ class Service_fragment : Fragment() {
 //            }
 //
 //        })
-        serviceAdapter.setItemClickListener {
-//            findNavController().navigate(
-//                Service_fragmentDirections.actionServiceFragmentToServiceDescription(
-//                    it
-//                )
-//            )
-        }
+
+
+
 
         return binding.root
     }
@@ -98,8 +105,12 @@ class Service_fragment : Fragment() {
         _binding.progBa.visibility = View.INVISIBLE
     }
 
-    private fun service_list_adapter(serviceResponse: List<ServiceListItem>?, context: Context?) {
-        serviceAdapter = ServiceAdapter(serviceResponse, context)
+    private fun service_list_adapter(
+        serviceResponse: List<ServiceListItem>?,
+        context: Context?,
+        navController: NavController
+    ) {
+        serviceAdapter = ServiceAdapter(serviceResponse, context,navController)
         binding.serviceRecycler.adapter = serviceAdapter
         binding.serviceRecycler.apply {
             setHasFixedSize(true)
@@ -107,6 +118,9 @@ class Service_fragment : Fragment() {
             adapter = serviceAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
+
+
+
     }
 
 }
