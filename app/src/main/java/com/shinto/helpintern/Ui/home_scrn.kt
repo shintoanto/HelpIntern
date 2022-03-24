@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.shinto.helpintern.ChatLogin
 import com.shinto.helpintern.Map.MapsActivity
 import com.shinto.helpintern.R
 import com.shinto.helpintern.databinding.FragmentHomeScrnBinding
@@ -29,6 +30,9 @@ class home_scrn : Fragment() {
     ): View {
         _binding = FragmentHomeScrnBinding.inflate(inflater, container, false)
 //        // Inflate the layout for this fragment
+        binding?.chatBtn?.setOnClickListener { view: View ->
+            view.findNavController().navigate(home_scrnDirections.actionHomeScrnToChatLogin())
+        }
 
         binding?.accomodationCard?.setOnClickListener { view: View ->
             view.findNavController()

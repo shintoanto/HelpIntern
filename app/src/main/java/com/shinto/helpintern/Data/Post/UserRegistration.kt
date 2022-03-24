@@ -4,11 +4,10 @@ import java.io.File
 
 data class UserRegistration(
     val email: String,
-    val firstName: String,
-    val lastName: String,
+    val first_name: String,
+    val last_name: String,
     val password: String,
-    val phoneNumber: String,
-  //  val profilePicture: File,
+    val phone_number: String,
     val repassword: String,
     val username: String
 )

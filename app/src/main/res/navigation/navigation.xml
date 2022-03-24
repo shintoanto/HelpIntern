@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_home_scrn_to_service_fragment"
             app:destination="@id/service_fragment" />
+        <action
+            android:id="@+id/action_home_scrn_to_chatLogin"
+            app:destination="@id/chatLogin" />
     </fragment>
     <fragment
         android:id="@+id/service_fragment"
@@ -99,6 +102,32 @@
         <argument
             android:name="serviceDescriptionArgs"
             app:argType="com.shinto.helpintern.Data.Get.ServiceListItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.shinto.helpintern.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatLogin"
+        android:name="com.shinto.helpintern.ChatLogin"
+        android:label="chat_login_fragment"
+        tools:layout="@layout/chat_login_fragment" >
+        <action
+            android:id="@+id/action_chatLogin_to_channel_Fragment"
+            app:destination="@id/channel_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/channel_Fragment"
+        android:name="com.shinto.helpintern.Channel_Fragment"
+        android:label="fragment_channel"
+        tools:layout="@layout/fragment_channel" >
+
+        <argument
+            android:name="chatUser"
+            app:argType="com.shinto.helpintern.ChatUser" />
     </fragment>
 
 </navigation>

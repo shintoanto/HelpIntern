@@ -55,13 +55,13 @@ class signup : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.registration(
             UserRegistration(
-                email = "shintopa@outlook.com",
-                firstName = "Shinto pa",
-                lastName = "P A",
-                phoneNumber = "9895137135",
-                password = "9539915795",
-                repassword = "9539915795",
-                username = "shinto"
+                email = "axw7777@gmail.com",
+                first_name = "Shi",
+                last_name = "pi",
+                password = "9746431294",
+                phone_number = "9746431294",
+                repassword = "9746431294",
+                username = "sss"
             )
         )
         viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
@@ -70,8 +70,8 @@ class signup : Fragment() {
                 Log.d("Res", response.code().toString())
                 Log.d("Res", response.message())
             } else {
-                //   Toast.makeText(con text, response.code(), Toast.LENGTH_LONG).show()
-                Log.d("Res", "Not working" + response.message())
+               // Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+                Log.d("Res", "Not working" + response.code().toString())
             }
         })
 
