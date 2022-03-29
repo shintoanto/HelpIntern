@@ -2,6 +2,7 @@ package com.shinto.helpintern.Ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ import com.shinto.helpintern.HelpInternrecycler
 import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.Model.ViewModelFactory
+import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.FragmentJobFragmentBinding
 
 class Job_fragment : Fragment() {
@@ -37,18 +39,17 @@ class Job_fragment : Fragment() {
         navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getJobList()
+
+
         viewModel.joblistResponse.observe(viewLifecycleOwner, Observer { response ->
-            if (response.isSuccessful) {
-                showProgressBar()
-                response.body().let { jobResponse ->
+            when (response) {
+                is Resource.Success -> {
                     hideProgressBar()
-                    //joblistAdapter = HelpInternrecycler(jobResponse,context)
-                    // joblistAdapter.differ.submitList(jobResponse)
-                    job_list_adapter(jobResponse, context,navController)
+                    response.data?.let { jobResponse ->
+                        Log.d("Res", "Resource is success$jobResponse")
+                    }
+
                 }
-            }else{
-                showProgressBar()
             }
 
         })
@@ -98,7 +99,7 @@ class Job_fragment : Fragment() {
         context: Context?,
         navController: NavController
     ) {
-        joblistAdapter = HelpInternrecycler(jobResponse, context,navController)
+        joblistAdapter = HelpInternrecycler(jobResponse, context, navController)
         binding.jobRecycler.adapter = joblistAdapter
         binding.jobRecycler.apply {
             setHasFixedSize(true)

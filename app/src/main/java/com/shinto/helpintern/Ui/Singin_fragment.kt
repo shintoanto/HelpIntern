@@ -7,12 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.shinto.helpintern.Data.Post.UserLogin
+import com.shinto.helpintern.MainViewModel
+import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.R
+import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 
 
@@ -21,6 +28,7 @@ class singin_fragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private var _binding: FragmentSinginFragmentBinding? = null
     private val binding get() = _binding
+    private lateinit var viewModel: MainViewModel
 
     public override fun onStart() {
         super.onStart()
@@ -51,6 +59,26 @@ class singin_fragment : Fragment() {
         binding?.singUpBtn?.setOnClickListener {
             view?.findNavController()?.navigate(R.id.signup)
         }
+        val repository = Repository()
+        val viewModelFactory = ViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.userLoginViewModel(
+            UserLogin(
+                email = "shintopa@outlook.com",
+                password = "9895137135"
+            )
+        )
+        viewModel.userLoginResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Res", response.body().toString())
+                Log.d("Res", response.code().toString())
+                Log.d("Res", response.message())
+            } else {
+                // Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+                Log.d("Res", "Not working" + response.code().toString())
+            }
+        })
+
         emailFocusChangeListner()
         passwordFocusChangeListner()
 

@@ -1,19 +1,14 @@
 package com.shinto.helpintern.Ui
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -23,9 +18,6 @@ import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.databinding.FragmentSignupBinding
-import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
-import java.io.File
-import java.net.URI
 
 class signup : Fragment() {
 
@@ -40,10 +32,11 @@ class signup : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
+
         val repository = Repository()
         navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)
+
         val firstName = binding.firstEditxt.text
         val secondName = binding.lastEdtTxt.text
         val userName = binding.usrEdtext.text
@@ -53,27 +46,28 @@ class signup : Fragment() {
         val rePassword = binding.rePasswordEditext.text
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.registration(
-            UserRegistration(
-                email = "axw7777@gmail.com",
-                first_name = "Shi",
-                last_name = "pi",
-                password = "9746431294",
-                phone_number = "9746431294",
-                repassword = "9746431294",
-                username = "sss"
-            )
+
+        viewModel.registration (
+                UserRegistration(
+                    email = "shintos@outlook.com",
+                    first_name = "shintos",
+                    last_name = "shifas",
+                    password = "00000",
+                    phone_number = "0000000000",
+                    repassword = "0000",
+                    username = "antos"
+                )
         )
-        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
-            if (response.isSuccessful) {
-                Log.d("Res", response.body().toString())
-                Log.d("Res", response.code().toString())
-                Log.d("Res", response.message())
-            } else {
-               // Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
-                Log.d("Res", "Not working" + response.code().toString())
-            }
-        })
+//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+//            if (response.isSuccessful) {
+//                Log.d("Res", response.body().toString())
+//                Log.d("Res", response.code().toString())
+//                Log.d("Res", response.message())
+//            } else {
+//                // Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+//                Log.d("Res", "Not working" + response.code().toString())
+//            }
+//        })
 
         binding.imgSignIn.setOnClickListener {
             signUp()
@@ -155,7 +149,6 @@ class signup : Fragment() {
             }
         }
     }
-
 
     private fun phoneNumber(): CharSequence? {
         val phone = _binding.phNumEdtTxt.text.toString()
