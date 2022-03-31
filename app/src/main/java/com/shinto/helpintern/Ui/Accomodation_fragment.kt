@@ -3,13 +3,10 @@ package com.shinto.helpintern
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.SearchView
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,13 +16,13 @@ import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.databinding.FragmentAccomodationFragmentBinding
 
+
 class accomodation_fragment : Fragment() {
 
     lateinit var viewModel: MainViewModel
     lateinit var accomodationAdapter: AccomodationAdapter
-    lateinit var _binding: FragmentAccomodationFragmentBinding
+    private lateinit var _binding: FragmentAccomodationFragmentBinding
     private val binding get() = _binding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,10 +39,10 @@ class accomodation_fragment : Fragment() {
                 showProgressBar()
                 response.body()?.let { accomodationResponse ->
                     hideProgressBar()
-                    Log.d("Adap",accomodationResponse.toString())
+                    Log.d("Adap", accomodationResponse.toString())
                     accomodationListAdapterSet(context, accomodationResponse)
                 }
-            }else{
+            } else {
                 showProgressBar()
             }
         })
@@ -77,6 +74,7 @@ class accomodation_fragment : Fragment() {
         val view = binding.root
         return view
     }
+
     private fun showProgressBar() {
         _binding.progBar.visibility = View.VISIBLE
     }
@@ -89,7 +87,7 @@ class accomodation_fragment : Fragment() {
         context: Context?,
         accomodationResponse: List<AccomodationDataClassItem>,
     ) {
-        accomodationAdapter = AccomodationAdapter(context,accomodationResponse)
+        accomodationAdapter = AccomodationAdapter(context, accomodationResponse)
         binding.accomodRecycler.adapter = accomodationAdapter
         binding.accomodRecycler.apply {
             setHasFixedSize(true)
@@ -99,8 +97,8 @@ class accomodation_fragment : Fragment() {
         }
     }
 
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null!!
+    }
 }

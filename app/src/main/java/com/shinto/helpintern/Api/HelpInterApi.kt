@@ -17,7 +17,7 @@ interface HelpInterApi {
     @GET("user/job-list")
     suspend fun JobList(): Response<JobListDataClass>
 
-    @POST("user/register")
+    @POST("user/register/")
     suspend fun userRegister(
         @Body userRegistration: UserRegistration
     ): Response<UserRegistrationResponse>

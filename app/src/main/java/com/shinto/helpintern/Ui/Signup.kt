@@ -47,27 +47,26 @@ class signup : Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        viewModel.registration (
-                UserRegistration(
-                    email = "shintos@outlook.com",
-                    first_name = "shintos",
-                    last_name = "shifas",
-                    password = "00000",
-                    phone_number = "0000000000",
-                    repassword = "0000",
-                    username = "antos"
-                )
+        viewModel.registration(
+            UserRegistration(
+                email = "shintosa@outlook.com",
+                first_name = "shintaos",
+                last_name = "shifaas",
+                password = "0000a0",
+                phone_number = "0000001200",
+                repassword = "0000a0",
+                username = "antosss"
+            )
         )
-//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
-//            if (response.isSuccessful) {
-//                Log.d("Res", response.body().toString())
-//                Log.d("Res", response.code().toString())
-//                Log.d("Res", response.message())
-//            } else {
-//                // Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
-//                Log.d("Res", "Not working" + response.code().toString())
-//            }
-//        })
+        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Res", "messag body" + response.body().toString())
+                Log.d("Res", "response code :" + response.code().toString())
+                Log.d("Res", "response message" + response.message())
+            } else {
+                Log.d("Res", "Not working" + response.code().toString())
+            }
+        })
 
         binding.imgSignIn.setOnClickListener {
             signUp()
