@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shinto.helpintern.Data.Get.JobListDataClass
@@ -43,10 +44,26 @@ class Job_fragment : Fragment() {
                     hideProgressBar()
                     response.data?.let { jobResponse ->
                         Log.d("Res", "Resource is success$jobResponse")
+                        joblistAdapter.differ.submitList(jobResponse)
+                    }
+                }
+                is Resource.Error -> {
+                    response.message?.let {
+                        Log.d("Res", it.toString())
                     }
                 }
             }
         })
+        job_list_adapter()
+        joblistAdapter.setOnClickListner {
+            Log.d("Res","adapter onclick is working")
+            navigate(it)
+        }
+
+//        viewModel.joblistResponse.observe(viewLifecycleOwner, Observer { response ->
+//            Log.d("Res","responsese"+response.message.toString())
+//        })
+
 //        joblistAdapter.setItemClickListner {
 //            findNavController().navigate()
 //        }
@@ -76,9 +93,13 @@ class Job_fragment : Fragment() {
 
         return binding.root
     }
-//    private fun navigate(it:JobListDataClass){
-//        val action:NavDirections = Job_fragmentDi.action_job_fragment_to_jobs_description_fragment
-//    }
+
+    private fun navigate(it: JobListDataClass) {
+        Log.d("Res","jljljjljjklkl")
+        val action: NavDirections =
+            Job_fragmentDirections.actionJobFragmentToJobsDescriptionFragment(it)
+        navController.navigate(action)
+    }
 
     private fun showProgressBar() {
         binding.progBar.visibility = View.VISIBLE
@@ -88,12 +109,9 @@ class Job_fragment : Fragment() {
         binding.progBar.visibility = View.INVISIBLE
     }
 
-    private fun job_list_adapter(
-        jobResponse: List<JobListDataClass>?,
-        context: Context?,
-        navController: NavController
-    ) {
-        joblistAdapter = HelpInternrecycler(jobResponse, context, navController)
+    private fun job_list_adapter() {
+        // joblistAdapter = HelpInternrecycler(jobResponse, context, navController)
+        joblistAdapter = HelpInternrecycler()
         binding.jobRecycler.adapter = joblistAdapter
         binding.jobRecycler.apply {
             setHasFixedSize(true)
@@ -103,9 +121,9 @@ class Job_fragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null!!
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        binding = null!!
+//    }
 
 }

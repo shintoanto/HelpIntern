@@ -4,11 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View" />
-
         <variable
             name="user"
-            type="com.shinto.helpintern.Data.Get.JobListDataClass" />
+            type="com.shinto.helpintern.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

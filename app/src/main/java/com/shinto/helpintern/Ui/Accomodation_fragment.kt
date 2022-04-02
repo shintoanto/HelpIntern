@@ -32,20 +32,28 @@ class accomodation_fragment : Fragment() {
         val repository = Repository()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.accomodationList()
 
         viewModel.accomodationResponse.observe(viewLifecycleOwner, Observer { response ->
-            if (response.isSuccessful) {
-                showProgressBar()
-                response.body()?.let { accomodationResponse ->
+            when (response) {
+                is Resource.Success -> {
                     hideProgressBar()
-                    Log.d("Adap", accomodationResponse.toString())
-                    accomodationListAdapterSet(context, accomodationResponse)
+                    response.data?.let { accomodationResponse ->
+                        accomodationAdapter.differ.submitList(accomodationResponse)
+                    }
+
                 }
-            } else {
-                showProgressBar()
+                is Resource.Error -> {
+                    response.message?.let {
+                        Log.d("Res", it.toString())
+                    }
+                }
+                is Resource.Loading ->{
+                   showProgressBar()
+                }
             }
         })
+
+        accomodationListAdapterSet(context)
 
 //        val names = arrayOf("android", "gtech", "samsunt")
 //        val adapter: ArrayAdapter<String> = ArrayAdapter(
@@ -71,8 +79,7 @@ class accomodation_fragment : Fragment() {
 //        })
 
         // Inflate the layout for this fragment
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     private fun showProgressBar() {
@@ -85,9 +92,9 @@ class accomodation_fragment : Fragment() {
 
     private fun accomodationListAdapterSet(
         context: Context?,
-        accomodationResponse: List<AccomodationDataClassItem>,
+//        accomodationResponse: List<AccomodationDataClassItem>,
     ) {
-        accomodationAdapter = AccomodationAdapter(context, accomodationResponse)
+        accomodationAdapter = AccomodationAdapter(context)
         binding.accomodRecycler.adapter = accomodationAdapter
         binding.accomodRecycler.apply {
             setHasFixedSize(true)
@@ -97,8 +104,8 @@ class accomodation_fragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null!!
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null!!
+//    }
 }

@@ -26,7 +26,11 @@
         android:id="@+id/signup"
         android:name="com.shinto.helpintern.Ui.signup"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signup_to_home_scrn"
+            app:destination="@id/home_scrn" />
+    </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/home_screen"-->
     <!--        android:name="com.shinto.helpintern.Home_screen"-->
@@ -54,7 +58,11 @@
         android:id="@+id/accomodation_description"
         android:name="com.shinto.helpintern.Ui.accomodation_description"
         android:label="fragment_accomodation_description"
-        tools:layout="@layout/fragment_accomodation_description" />
+        tools:layout="@layout/fragment_accomodation_description" >
+        <argument
+            android:name="jobDescriotion"
+            app:argType="com.shinto.helpintern.Data.Get.JobListDataClass" />
+    </fragment>
     <fragment
         android:id="@+id/accomodation_fragment"
         android:name="com.shinto.helpintern.accomodation_fragment"
@@ -63,6 +71,9 @@
         <action
             android:id="@+id/action_accomodation_fragment_to_home_scrn"
             app:destination="@id/home_scrn" />
+        <action
+            android:id="@+id/action_accomodation_fragment_to_accomodation_description"
+            app:destination="@id/accomodation_description" />
     </fragment>
     <fragment
         android:id="@+id/home_scrn"
@@ -78,9 +89,9 @@
         <action
             android:id="@+id/action_home_scrn_to_service_fragment"
             app:destination="@id/service_fragment" />
-        <action
-            android:id="@+id/action_home_scrn_to_chatLogin"
-            app:destination="@id/chatLogin" />
+<!--        <action-->
+<!--            android:id="@+id/action_home_scrn_to_chatLogin"-->
+<!--            app:destination="@id/chatLogin" />-->
     </fragment>
     <fragment
         android:id="@+id/service_fragment"
@@ -110,24 +121,24 @@
         tools:layout="@layout/fragment_login" >
 
     </fragment>
-    <fragment
-        android:id="@+id/chatLogin"
-        android:name="com.shinto.helpintern.ChatLogin"
-        android:label="chat_login_fragment"
-        tools:layout="@layout/chat_login_fragment" >
-        <action
-            android:id="@+id/action_chatLogin_to_channel_Fragment"
-            app:destination="@id/channel_Fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/channel_Fragment"
-        android:name="com.shinto.helpintern.Channel_Fragment"
-        android:label="fragment_channel"
-        tools:layout="@layout/fragment_channel" >
+<!--    <fragment-->
+<!--        android:id="@+id/chatLogin"-->
+<!--        android:name="com.shinto.helpintern.ChatLogin"-->
+<!--        android:label="chat_login_fragment"-->
+<!--        tools:layout="@layout/chat_login_fragment" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_chatLogin_to_channel_Fragment"-->
+<!--            app:destination="@id/channel_Fragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/channel_Fragment"-->
+<!--        android:name="com.shinto.helpintern.Channel_Fragment"-->
+<!--        android:label="fragment_channel"-->
+<!--        tools:layout="@layout/fragment_channel" >-->
 
-        <argument
-            android:name="chatUser"
-            app:argType="com.shinto.helpintern.ChatUser" />
-    </fragment>
+<!--        <argument-->
+<!--            android:name="chatUser"-->
+<!--            app:argType="com.shinto.helpintern.ChatUser" />-->
+<!--    </fragment>-->
 
 </navigation>

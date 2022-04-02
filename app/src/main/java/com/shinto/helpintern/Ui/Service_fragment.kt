@@ -2,6 +2,7 @@ package com.shinto.helpintern.Ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.shinto.helpintern.Data.Get.ServiceListItem
 import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.Repository.Repository
+import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.ServiceFragmentBinding
 
 class Service_fragment : Fragment() {
@@ -37,28 +39,45 @@ class Service_fragment : Fragment() {
         navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.userList()
-        viewModel.serviceResponse.observe(viewLifecycleOwner, Observer { response ->
-            if (response.isSuccessful) {
-                showProgressBar()
-                response.body().let { serviceResponse ->
-                    hideProgressBar()
-                    //joblistAdapter = HelpInternrecycler(jobResponse,context)
-                    // joblistAdapter.differ.submitList(jobResponse)
 
-                    serviceAdapter = ServiceAdapter(serviceResponse, context,navController)
-                    binding.serviceRecycler.adapter = serviceAdapter
-                    binding.serviceRecycler.apply {
-                        setHasFixedSize(true)
-                        setItemViewCacheSize(13)
-                        adapter = serviceAdapter
-                        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        viewModel.serviceResponse.observe(viewLifecycleOwner, Observer { response ->
+//            if (response.isSuccessful) {
+//                showProgressBar()
+//                response.body().let { serviceResponse ->
+//                    hideProgressBar()
+//                    //joblistAdapter = HelpInternrecycler(jobResponse,context)
+//                    // joblistAdapter.differ.submitList(jobResponse)
+//
+//                    serviceAdapter = ServiceAdapter(serviceResponse, context,navController)
+//                    binding.serviceRecycler.adapter = serviceAdapter
+//                    binding.serviceRecycler.apply {
+//                        setHasFixedSize(true)
+//                        setItemViewCacheSize(13)
+//                        adapter = serviceAdapter
+//                        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//                    }
+//                }
+//            } else {
+//                showProgressBar()
+//            }
+            when (response) {
+                is Resource.Success -> {
+                    hideProgressBar()
+                    response.data?.let { serviceResponse ->
+                        serviceAdapter.differ.submitList(serviceResponse)
                     }
                 }
-            } else {
-                showProgressBar()
+                is Resource.Error -> {
+                    response.message?.let {
+                        Log.d("Res", it.toString())
+                    }
+                }
+                is Resource.Loading -> {
+                    showProgressBar()
+                }
             }
         })
+        service_list_adapter(context)
 
         serviceAdapter.setItemClickListener {
             findNavController().navigate(
@@ -92,8 +111,6 @@ class Service_fragment : Fragment() {
 //        })
 
 
-
-
         return binding.root
     }
 
@@ -106,11 +123,11 @@ class Service_fragment : Fragment() {
     }
 
     private fun service_list_adapter(
-        serviceResponse: List<ServiceListItem>?,
+        // serviceResponse: List<ServiceListItem>?,
         context: Context?,
-        navController: NavController
+        // navController: NavController
     ) {
-        serviceAdapter = ServiceAdapter(serviceResponse, context,navController)
+        serviceAdapter = ServiceAdapter(context)
         binding.serviceRecycler.adapter = serviceAdapter
         binding.serviceRecycler.apply {
             setHasFixedSize(true)
@@ -118,7 +135,6 @@ class Service_fragment : Fragment() {
             adapter = serviceAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
-
 
 
     }

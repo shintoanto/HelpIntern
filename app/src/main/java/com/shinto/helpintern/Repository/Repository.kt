@@ -14,7 +14,7 @@ class Repository {
     suspend fun userLogin(userLogin: UserLogin): Response<UserLogin> =
         RetrofitInstance.retrofitIntace.userLogin(userLogin)
 
-    suspend fun getJobList(): Response<JobListDataClass> =
+    suspend fun getJobList(): Response<List<JobListDataClass>> =
         RetrofitInstance.retrofitIntace.JobList()
 
     suspend fun postUserRegistration(userRegistration: UserRegistration): Response<UserRegistrationResponse> {

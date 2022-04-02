@@ -9,7 +9,7 @@ import io.getstream.chat.android.client.ChatClient
 
 class MainActivity : AppCompatActivity() {
 
-    private val client = ChatClient.instance()
+   // private val client = ChatClient.instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +20,14 @@ class MainActivity : AppCompatActivity() {
 
         val navController = host.navController
 
-        if (navController.currentDestination?.label.toString().contains("login")) {
-            val currentUser = client.getCurrentUser()
-            if (currentUser != null) {
-                val user = ChatUser(currentUser.name, currentUser.id)
-                val action = ChatLoginDirections.actionChatLoginToChannelFragment(user)
-                navController.navigate(action)
-            }
-        }
+//        if (navController.currentDestination?.label.toString().contains("login")) {
+//            val currentUser = client.getCurrentUser()
+//            if (currentUser != null) {
+//                val user = ChatUser(currentUser.name, currentUser.id)
+//                val action = ChatLoginDirections.actionChatLoginToChannelFragment(user)
+//                navController.navigate(action)
+//            }
+//        }
 
 //        val actionBar = supportActionBar
 //

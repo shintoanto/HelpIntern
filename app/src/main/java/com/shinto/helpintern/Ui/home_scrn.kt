@@ -22,9 +22,9 @@ class home_scrn : Fragment() {
     ): View {
         _binding = FragmentHomeScrnBinding.inflate(inflater, container, false)
 //        // Inflate the layout for this fragment
-        binding?.chatBtn?.setOnClickListener { view: View ->
-            view.findNavController().navigate(home_scrnDirections.actionHomeScrnToChatLogin())
-        }
+//        binding?.chatBtn?.setOnClickListener { view: View ->
+//            view.findNavController().navigate(home_scrnDirections.actionHomeScrnToChatLogin())
+//        }
 
         binding?.accomodationCard?.setOnClickListener { view: View ->
             view.findNavController()

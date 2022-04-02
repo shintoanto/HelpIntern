@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.R
 import com.shinto.helpintern.databinding.FragmentJobsDescriptionFragmentBinding
@@ -14,7 +15,7 @@ class jobs_description_fragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     lateinit var _binding: FragmentJobsDescriptionFragmentBinding
     private val binding get() = _binding
-  // val args: by navArgs()
+   // val args: jobDetaisls by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

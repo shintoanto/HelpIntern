@@ -15,7 +15,7 @@ import retrofit2.http.POST
 interface HelpInterApi {
 
     @GET("user/job-list")
-    suspend fun JobList(): Response<JobListDataClass>
+    suspend fun JobList(): Response<List<JobListDataClass>>
 
     @POST("user/register/")
     suspend fun userRegister(

@@ -1,6 +1,7 @@
 package com.shinto.helpintern
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +19,9 @@ import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Ui.Job_fragment
 
 class HelpInternrecycler(
-    private val jobResponse: List<JobListDataClass>?,
-    private val context: Context?,
-    navController: NavController
+//    private val jobResponse: List<JobListDataClass>?,
+//    private val context: Context?,
+//    navController: NavController
 ) :
     RecyclerView.Adapter<HelpInternrecycler.HelpInternViewHolder>() {
 
@@ -28,7 +29,7 @@ class HelpInternrecycler(
         parent: ViewGroup,
         viewType: Int
     ): HelpInternrecycler.HelpInternViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.jobscardview, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.jobscardview, parent, false)
 
         return HelpInternViewHolder(view)
     }
@@ -58,28 +59,26 @@ class HelpInternrecycler(
     val differ = AsyncListDiffer(this, diffcallback)
 
     override fun onBindViewHolder(holder: HelpInternrecycler.HelpInternViewHolder, position: Int) {
-        holder.heading.text = jobResponse?.get(position)?.companyName
-        holder.designation.text = jobResponse?.get(position)?.designation
-        // holder.tenTxt.text = jobResponse?.get(position)?.provider.toString()
-        holder.minimumWage.text = jobResponse?.get(position)?.minimumWage.toString()
-        holder.jobCard
+        holder.heading.text = differ.currentList.get(position)?.companyName
+        val nextItem = differ.currentList[position]
+        holder.designation.text = differ.currentList.get(position)?.designation
+        holder.minimumWage.text = differ.currentList.get(position)?.minimumWage.toString()
         holder.jobCard.setOnClickListener {
-         //  val navController = findNavController()
-        }
-        holder.itemView.setOnClickListener{
-
-            onItemClickListener
+            onItemClickListener?.let {
+                it(nextItem)
+            }
         }
     }
 
     private var onItemClickListener: ((JobListDataClass) -> Unit)? = null
 
-    fun setItemClickListner(listener: (JobListDataClass) -> Unit) {
+    fun setOnClickListner(listener: (JobListDataClass) -> Unit) {
+        Log.d("Res", "setONClicklistner")
         onItemClickListener = listener
     }
 
     override fun getItemCount(): Int {
-        return jobResponse?.size!!
+        return differ.currentList.size
     }
 
 }
