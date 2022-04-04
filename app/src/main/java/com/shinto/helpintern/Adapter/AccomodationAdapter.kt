@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -29,6 +30,7 @@ class AccomodationAdapter(
         val accomFair = view.findViewById<TextView>(R.id.minmFairTxt)
         val accomPIc = view.findViewById<ImageView>(R.id.accomPic)
         val accomParkingIcon = view.findViewById<ImageView>(R.id.parkingImg)
+        val accomCard = view.findViewById<LinearLayout>(R.id.accomCard)
     }
 
     private val diffcallback = object : DiffUtil.ItemCallback<AccomodationDataClassItem>() {
@@ -67,11 +69,11 @@ class AccomodationAdapter(
                     .into(holder.accomParkingIcon)
             }
         }
+
         holder.itemView.setOnClickListener {
-            onItemClickListener.let {
-                if (it != null) {
-                    it(accomDesc)
-                }
+            onItemClickListener?.let {
+                Log.d("Res", "oooooooooooooooooo" + it.toString())
+                it(accomDesc)
             }
         }
 

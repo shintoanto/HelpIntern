@@ -1,6 +1,7 @@
 package com.shinto.helpintern
 
 import android.util.Log
+import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
+import java.util.*
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
@@ -28,6 +30,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val serviceResponse: MutableLiveData<Resource<List<ServiceListItem>>> = MutableLiveData()
 
     var signUp: MutableLiveData<Resource<String>> = MutableLiveData()
+    var logIn: MutableLiveData<Resource<LogInResponse>> = MutableLiveData()
+
+    var mainView = ObservableField(true)
 
     val email = MutableLiveData<String>()
     val exception = MutableLiveData<String>()
@@ -46,6 +51,11 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     var isPassword: Boolean = false
     var isRepassword: Boolean = false
 
+    var logInEmain = MutableLiveData<String>()
+    var passwordLogIN = MutableLiveData<String>()
+    var isPasswordValied = false
+
+
     private var isSignUp: MutableLiveData<Boolean> = MutableLiveData()
     val _isSignUp: LiveData<Boolean>
         get() = isSignUp
@@ -54,6 +64,14 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         getJobList()
         accomodationList()
         userList()
+    }
+
+    fun mainVisibility(setCondition: Boolean) {
+        if (setCondition) {
+            this.mainView.set(true)
+        } else {
+            this.mainView.set(false)
+        }
     }
 
     fun userLoginViewModel(userLogin: UserLogin) {
@@ -74,6 +92,19 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             } catch (error: Exception) {
                 exception.value = error.toString()
             }
+        }
+    }
+    fun logInData(logInData: UserLogin) = viewModelScope.launch {
+
+        try {
+            logIn.postValue(Resource.Loading())
+            val response = repository.logInDetails(logInData)
+            Log.i("response", response.toString())
+            logIn.postValue(handleResponse(response))
+
+        } catch (error: Exception) {
+            Log.i("responseL", error.toString())
+
         }
     }
 

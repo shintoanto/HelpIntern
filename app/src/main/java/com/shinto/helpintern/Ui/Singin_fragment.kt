@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -21,6 +22,8 @@ import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.R
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 
 class singin_fragment : Fragment() {
@@ -79,54 +82,81 @@ class singin_fragment : Fragment() {
             }
         })
 
-        emailFocusChangeListner()
-        passwordFocusChangeListner()
+        viewModel.logInEmain.observe(viewLifecycleOwner, Observer { emailResponse ->
+            if (!Patterns.EMAIL_ADDRESS.matcher(emailResponse).matches()) {
+                binding?.emailEditext?.error = "Invalid Email Id"
+                return@Observer
+            }
+            if (emailResponse.isNullOrEmpty()) {
+                binding?.emailEditext?.error = "Field is required"
+                return@Observer
+            }
+            viewModel.isEmailValid = true
+        })
+        viewModel.passwordLogIN.observe(viewLifecycleOwner, Observer { passwordResponse ->
+            if (passwordResponse.isNullOrEmpty()) {
+                binding?.passwordEditext?.error = "Field is required"
+                return@Observer
+            }
+            viewModel.isPasswordValied = true
+            Log.i("password", viewModel.password.value.toString())
+        })
+        binding?.imgSignIn?.setOnClickListener {
+            if (viewModel.isEmailValid && viewModel.isPassword) {
+                val logInDetails = UserLogin(viewModel.email.value, viewModel.password.value)
 
+            }
+        }
+
+//        emailFocusChangeListner()
+//        passwordFocusChangeListner()
 
 
         return binding?.root!!
     }
 
-    private fun emailFocusChangeListner() {
-        binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                binding?.emailContainer?.helperText = validEmail()
-            }
-        }
-    }
 
-    private fun validEmail(): String? {
-        val emailText = binding?.emailEditext?.text.toString()
-        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-            return "Invalid Email Address"
-        }
-        return null
-    }
+//    private fun emailFocusChangeListner() {
+//        binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
+//            if (!focused) {
+//                binding?.emailContainer?.helperText = validEmail()
+//            }
+//        }
+//    }
+//
+//    private fun validEmail(): String? {
+//        val emailText = binding?.emailEditext?.text.toString()
+//        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
+//            return "Invalid Email Address"
+//        }
+//        return null
+//    }
+//
+//    private fun passwordFocusChangeListner() {
+//        binding?.passwordEditext?.setOnFocusChangeListener { _, focused ->
+//            if (!focused) {
+//                binding?.passwordContainer?.helperText = validPassword()
+//            }
+//        }
+//    }
+//
+//    private fun validPassword(): String? {
+//        val passwordText = binding?.passwordEditext?.text.toString()
+//        if (passwordText.length < 8) {
+//            return "Minimum 8 character"
+//        }
+//        if (!passwordText.matches(".*[A-Z].*".toRegex())) {
+//            return "Must contain 1 upper case charectore"
+//        }
+//        if (!passwordText.matches(".*[a-z].*".toRegex())) {
+//            return "Must contain 1 small case charectore"
+//        }
+//        if (!passwordText.matches(".*[@#\$%^&+=].*".toRegex())) {
+//            return "Must contain 1 lower-case Character"
+//        }
+//        return null
+//    }
 
-    private fun passwordFocusChangeListner() {
-        binding?.passwordEditext?.setOnFocusChangeListener { _, focused ->
-            if (!focused) {
-                binding?.passwordContainer?.helperText = validPassword()
-            }
-        }
-    }
-
-    private fun validPassword(): String? {
-        val passwordText = binding?.passwordEditext?.text.toString()
-        if (passwordText.length < 8) {
-            return "Minimum 8 character"
-        }
-        if (!passwordText.matches(".*[A-Z].*".toRegex())) {
-            return "Must contain 1 upper case charectore"
-        }
-        if (!passwordText.matches(".*[a-z].*".toRegex())) {
-            return "Must contain 1 small case charectore"
-        }
-        if (!passwordText.matches(".*[@#\$%^&+=].*".toRegex())) {
-            return "Must contain 1 lower-case Character"
-        }
-        return null
-    }
 
 //        private fun usernameFocusChangeListner() {
 //        _binding?.emailEditext?.setOnFocusChangeListener { _, focused ->

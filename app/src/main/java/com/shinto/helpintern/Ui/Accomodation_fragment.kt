@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shinto.helpintern.Adapter.AccomodationAdapter
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
@@ -23,6 +26,7 @@ class accomodation_fragment : Fragment() {
     lateinit var accomodationAdapter: AccomodationAdapter
     private lateinit var _binding: FragmentAccomodationFragmentBinding
     private val binding get() = _binding
+    lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +34,7 @@ class accomodation_fragment : Fragment() {
         _binding = FragmentAccomodationFragmentBinding.inflate(inflater, container, false)
 
         val repository = Repository()
+        navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
@@ -37,6 +42,7 @@ class accomodation_fragment : Fragment() {
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
+                    viewModel.mainVisibility(true)
                     response.data?.let { accomodationResponse ->
                         accomodationAdapter.differ.submitList(accomodationResponse)
                     }
@@ -54,6 +60,7 @@ class accomodation_fragment : Fragment() {
         })
 
         accomodationListAdapterSet(context)
+
 
 //        val names = arrayOf("android", "gtech", "samsunt")
 //        val adapter: ArrayAdapter<String> = ArrayAdapter(
@@ -81,6 +88,9 @@ class accomodation_fragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
+//    private fun navigation(it:AccomodationDataClassItem){
+//        val action:NavDirections = Acco
+//    }
 
     private fun showProgressBar() {
         _binding.progBar.visibility = View.VISIBLE

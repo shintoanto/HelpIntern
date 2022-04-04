@@ -59,9 +59,10 @@
         android:name="com.shinto.helpintern.Ui.accomodation_description"
         android:label="fragment_accomodation_description"
         tools:layout="@layout/fragment_accomodation_description" >
+
         <argument
-            android:name="jobDescriotion"
-            app:argType="com.shinto.helpintern.Data.Get.JobListDataClass" />
+            android:name="accomDatArg"
+            app:argType="com.shinto.helpintern.Data.Get.AccomodationDataClassItem" />
     </fragment>
     <fragment
         android:id="@+id/accomodation_fragment"
@@ -114,13 +115,13 @@
             android:name="serviceDescriptionArgs"
             app:argType="com.shinto.helpintern.Data.Get.ServiceListItem" />
     </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.shinto.helpintern.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+<!--    <fragment-->
+<!--        android:id="@+id/loginFragment"-->
+<!--        android:name="com.shinto.helpintern.ui.login.LoginFragment"-->
+<!--        android:label="fragment_login"-->
+<!--        tools:layout="@layout/fragment_login" >-->
 
-    </fragment>
+<!--    </fragment>-->
 <!--    <fragment-->
 <!--        android:id="@+id/chatLogin"-->
 <!--        android:name="com.shinto.helpintern.ChatLogin"-->

@@ -1,7 +1,10 @@
 package com.shinto.helpintern.Data.Get
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class AccomodationDataClassItem(
     @SerializedName("accommodationType")
     val accommodationType: String? = null,
@@ -43,4 +46,4 @@ data class AccomodationDataClassItem(
     val userId: Int? = null,
     @SerializedName("zipCode")
     val zipCode: Int? = null
-)
+) : Parcelable
