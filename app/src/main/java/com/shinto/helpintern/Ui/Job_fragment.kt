@@ -59,13 +59,7 @@ class Job_fragment : Fragment() {
             navigate(it)
         }
 
-//        viewModel.joblistResponse.observe(viewLifecycleOwner, Observer { response ->
-//            Log.d("Res","responsese"+response.message.toString())
-//        })
 
-//        joblistAdapter.setItemClickListner {
-//            findNavController().navigate()
-//        }
 //        val names = arrayOf("android", "gtech", "samsunt")
 //        val adapter: ArrayAdapter<String> = ArrayAdapter(
 //            this, android.R.layout.simple_list_item_1, names

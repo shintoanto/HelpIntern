@@ -1,9 +1,11 @@
 package com.shinto.helpintern.Api
 
+import android.util.Log
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.Data.Get.ServiceListItem
+import com.shinto.helpintern.Data.LoginTokenResponse
 import com.shinto.helpintern.Data.Post.UserLogin
 import com.shinto.helpintern.Data.Post.UserRegistrationResponse
 import retrofit2.Response
@@ -25,7 +27,7 @@ interface HelpInterApi {
     @POST("api/token/")
     suspend fun userLogin(
         @Body userRegistration: UserLogin
-    ): Response<UserLogin>
+    ): Response<LoginTokenResponse>
 
     @GET("user/accommodation-list-filter")
     suspend fun userAccomodationListApi(): Response<List<AccomodationDataClassItem>>

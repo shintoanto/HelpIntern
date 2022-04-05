@@ -1,5 +1,6 @@
 package com.shinto.helpintern
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
@@ -9,6 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Data.Get.ServiceListItem
+import com.shinto.helpintern.Data.LoginTokenResponse
 import com.shinto.helpintern.Data.Post.UserLogin
 import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.Data.Post.UserRegistrationResponse
@@ -21,6 +23,8 @@ import java.util.*
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     var userLoginResponse: MutableLiveData<Response<UserLogin>> = MutableLiveData()
     var joblistResponse: MutableLiveData<Resource<List<JobListDataClass>>> = MutableLiveData()
     var registerResponse: MutableLiveData<Response<UserRegistrationResponse>> =
@@ -30,7 +34,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val serviceResponse: MutableLiveData<Resource<List<ServiceListItem>>> = MutableLiveData()
 
     var signUp: MutableLiveData<Resource<String>> = MutableLiveData()
-    var logIn: MutableLiveData<Resource<LogInResponse>> = MutableLiveData()
+    var logIn: MutableLiveData<Resource<LoginTokenResponse>> = MutableLiveData()
 
     var mainView = ObservableField(true)
 
@@ -55,6 +59,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     var passwordLogIN = MutableLiveData<String>()
     var isPasswordValied = false
 
+    val isValidated = MutableLiveData<Boolean>()
 
     private var isSignUp: MutableLiveData<Boolean> = MutableLiveData()
     val _isSignUp: LiveData<Boolean>
@@ -64,6 +69,21 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         getJobList()
         accomodationList()
         userList()
+       // checkingUser()
+
+    }
+
+    fun checkingUser() {
+        isValidated.value =
+            sharedPreferences.contains("isLoggedIn") && (sharedPreferences.getBoolean(
+                "isLoggedIn",
+                false
+            ))
+    }
+
+    fun saveUserDetails(token: String) {
+        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+        sharedPreferences.edit().putString("token", token).apply()
     }
 
     fun mainVisibility(setCondition: Boolean) {
@@ -74,14 +94,13 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun userLoginViewModel(userLogin: UserLogin) {
-        viewModelScope.launch {
-            val response: Response<UserLogin> =
-                repository.userLogin(userLogin)
-            userLoginResponse.value = response
-        }
-    }
-
+//    fun userLoginViewModel(userLogin: UserLogin) {
+//        viewModelScope.launch {
+//            val response: Response<UserLogin> =
+//                repository.userLogin(userLogin)
+//            userLoginResponse.value = response
+//        }
+//    }
 
     fun signUpRegistrationData(userRegistration: UserRegistration) {
         viewModelScope.launch {
@@ -94,18 +113,33 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             }
         }
     }
-    fun logInData(logInData: UserLogin) = viewModelScope.launch {
 
+    fun logInData(logInData: UserLogin) = viewModelScope.launch {
         try {
             logIn.postValue(Resource.Loading())
-            val response = repository.logInDetails(logInData)
-            Log.i("response", response.toString())
-            logIn.postValue(handleResponse(response))
+            val response = repository.userLogin(logInData)
+            Log.i("Res", response.toString())
+            logIn.postValue(handleLoginResponse(response))
 
         } catch (error: Exception) {
             Log.i("responseL", error.toString())
-
         }
+    }
+
+    private fun handleLoginResponse(response: Response<LoginTokenResponse>): Resource<LoginTokenResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                Log.i("responseAc", resultResponse.accessToken)
+                Log.i("responseRef", resultResponse.refreshToken)
+                return Resource.Success(resultResponse)
+            }
+
+        } else {
+            response.body()?.let { resultResponse ->
+                return Resource.Error(resultResponse.toString())
+            }
+        }
+        return Resource.Error(response.message())
     }
 
     private fun handleResponse(response: Response<UserRegistrationResponse>): Resource<String> {

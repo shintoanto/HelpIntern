@@ -8,14 +8,20 @@ import kotlinx.coroutines.launch
 
 class ServiceViewModel(val serviceDetails: ServiceListItem) : ViewModel() {
 
-    val nameService: MutableLiveData<String> = MutableLiveData()
+    val City: MutableLiveData<String> = MutableLiveData()
+    val Province: MutableLiveData<String> = MutableLiveData()
+    val Country: MutableLiveData<String> = MutableLiveData()
+    val discription: MutableLiveData<String> = MutableLiveData()
 
     init {
         serviceName()
     }
 
-    private fun serviceName() = viewModelScope.launch {
-        nameService.value = serviceDetails.description
+    private fun serviceName() {
+        City.value = serviceDetails.city!!
+        Province.value = serviceDetails.province!!
+        Country.value = serviceDetails.country!!
+        discription.value = serviceDetails.description!!
     }
 
 }

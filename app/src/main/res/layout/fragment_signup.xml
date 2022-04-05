@@ -8,10 +8,10 @@
             name="users"
             type="com.shinto.helpintern.MainViewModel" />
     </data>
-
+<!--    android:visibilities="@{users.}"-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/progBar"
-        android:visibilities="@{users.}"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -91,7 +91,6 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lastEdtTxt"
-                        android:text="@={users.}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"

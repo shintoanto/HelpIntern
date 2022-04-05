@@ -51,8 +51,11 @@ class ServiceAdapter(
         holder.serviceHeading.text = differ.currentList.get(position)?.city
         holder.servicePlace.text = differ.currentList.get(position)?.country.toString()
         holder.serviceFair.text = differ.currentList.get(position)?.province.toString()
+        val serv = differ.currentList[position]
         holder.itemView.setOnClickListener {
-
+            onItemClickListener?.let {
+                it(serv)
+            }
         }
     }
 

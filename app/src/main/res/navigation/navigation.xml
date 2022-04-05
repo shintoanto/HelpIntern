@@ -105,6 +105,9 @@
         <action
             android:id="@+id/action_service_fragment_to_serviceDescription"
             app:destination="@id/serviceDescription" />
+        <action
+            android:id="@+id/action_service_fragment_to_service_discription_fragment"
+            app:destination="@id/service_discription_fragment" />
     </fragment>
     <fragment
         android:id="@+id/serviceDescription"
@@ -115,7 +118,16 @@
             android:name="serviceDescriptionArgs"
             app:argType="com.shinto.helpintern.Data.Get.ServiceListItem" />
     </fragment>
-<!--    <fragment-->
+    <fragment
+        android:id="@+id/service_discription_fragment"
+        android:name="com.shinto.helpintern.Ui.Service_discription_fragment"
+        android:label="service_discription_fragment"
+        tools:layout="@layout/service_discription_fragment" >
+        <argument
+            android:name="serviceArg"
+            app:argType="com.shinto.helpintern.Data.Get.ServiceListItem" />
+    </fragment>
+    <!--    <fragment-->
 <!--        android:id="@+id/loginFragment"-->
 <!--        android:name="com.shinto.helpintern.ui.login.LoginFragment"-->
 <!--        android:label="fragment_login"-->

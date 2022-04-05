@@ -1,5 +1,6 @@
 package com.shinto.helpintern.Ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -21,6 +22,7 @@ import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.R
 import com.shinto.helpintern.Repository.Repository
+import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -28,24 +30,24 @@ import java.lang.Exception
 
 class singin_fragment : Fragment() {
 
-    private lateinit var auth: FirebaseAuth
+   // private lateinit var auth: FirebaseAuth
     private var _binding: FragmentSinginFragmentBinding? = null
     private val binding get() = _binding
     private lateinit var viewModel: MainViewModel
 
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            reload()
-        }
-    }
+//    public override fun onStart() {
+//        super.onStart()
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        val currentUser = auth.currentUser
+//        if (currentUser != null) {
+//            reload()
+//        }
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Initialize Firebase Auth
-        auth = Firebase.auth
+      //  auth = Firebase.auth
     }
 
     override fun onCreateView(
@@ -65,20 +67,26 @@ class singin_fragment : Fragment() {
         val repository = Repository()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.userLoginViewModel(
-            UserLogin(
-                email = "shintopa@outlook.com",
-                password = "9895137135"
-            )
-        )
-        viewModel.userLoginResponse.observe(viewLifecycleOwner, Observer { response ->
-            if (response.isSuccessful) {
-                Log.d("Res", response.body().toString())
-                Log.d("Res", response.code().toString())
-                Log.d("Res", response.message())
-            } else {
-                // Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
-                Log.d("Res", "Not working" + response.code().toString())
+
+
+//        viewModel.userLoginResponse.observe(viewLifecycleOwner, Observer { response ->
+//            if (response.isSuccessful) {
+//                Log.d("Res", response.body().toString())
+//                Log.d("Res", response.code().toString())
+//                Log.d("Res", response.message())
+//            } else {
+//                // Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+//                Log.d("Res", "Not working" + response.code().toString())
+//            }
+//        })
+
+        viewModel.logIn.observe(viewLifecycleOwner, Observer { loginResponse ->
+
+            when (loginResponse) {
+                is Resource.Success -> {
+                    viewModel.saveUserDetails(loginResponse.data?.refreshToken!!)
+                   // val action =
+                }
             }
         })
 
@@ -101,12 +109,17 @@ class singin_fragment : Fragment() {
             viewModel.isPasswordValied = true
             Log.i("password", viewModel.password.value.toString())
         })
-        binding?.imgSignIn?.setOnClickListener {
-            if (viewModel.isEmailValid && viewModel.isPassword) {
-                val logInDetails = UserLogin(viewModel.email.value, viewModel.password.value)
 
-            }
-        }
+//        binding?.imgSignIn?.setOnClickListener {
+//            Log.d("Res","sign in working")
+//            if (viewModel.isEmailValid && viewModel.isPassword) {
+//                val logInDetails = UserLogin(viewModel.email.value, viewModel.password.value)
+//                viewModel.logInData(logInDetails)
+//            } else {
+//                Log.d("Res", "login not work")
+//            }
+//        }
+
 
 //        emailFocusChangeListner()
 //        passwordFocusChangeListner()

@@ -23,12 +23,22 @@ class serviceDescription : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view = ServiceDescriptionBinding.inflate(inflater, container, false)
+        binding = ServiceDescriptionBinding.inflate(inflater, container, false)
+
         val serviceDiscriptionFactory = ServiceDescriptionFactory(args.serviceDescriptionArgs)
         viewModel =
             ViewModelProvider(this, serviceDiscriptionFactory).get(ServiceViewModel::class.java)
 
-        viewModel.nameService.observe(viewLifecycleOwner, Observer {
+        viewModel.City.observe(viewLifecycleOwner, Observer {
+            binding.textView10.text = it
+        })
+        viewModel.Province.observe(viewLifecycleOwner, Observer {
+            binding.textView11.text = it
+        })
+        viewModel.Country.observe(viewLifecycleOwner, Observer {
+            binding.textView12.text = it
+        })
+        viewModel.discription.observe(viewLifecycleOwner, Observer {
             binding.serviceDiscription.text = it
         })
 

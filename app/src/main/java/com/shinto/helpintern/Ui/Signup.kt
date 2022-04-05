@@ -196,7 +196,6 @@ class signup : Fragment() {
                 Log.d("Res", reg.toString())
             }
         }
-
         Log.d("Res", "signup fragment2 ")
         return binding.root
     }

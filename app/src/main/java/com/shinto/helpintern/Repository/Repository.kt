@@ -4,6 +4,7 @@ import com.shinto.helpintern.Api.RetrofitInstance
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Data.Get.ServiceListItem
+import com.shinto.helpintern.Data.LoginTokenResponse
 import com.shinto.helpintern.Data.Post.UserLogin
 import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.Data.Post.UserRegistrationResponse
@@ -11,7 +12,7 @@ import retrofit2.Response
 
 class Repository {
 
-    suspend fun userLogin(userLogin: UserLogin): Response<UserLogin> =
+    suspend fun userLogin(userLogin: UserLogin): Response<LoginTokenResponse> =
         RetrofitInstance.retrofitIntace.userLogin(userLogin)
 
     suspend fun getJobList(): Response<List<JobListDataClass>> =
@@ -26,6 +27,5 @@ class Repository {
 
     suspend fun userServiceLists(): Response<List<ServiceListItem>> =
         RetrofitInstance.retrofitIntace.serviceList()
-
 
 }
