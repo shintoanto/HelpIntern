@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -51,11 +52,14 @@ class Job_fragment : Fragment() {
                         Log.d("Res", it.toString())
                     }
                 }
+                is Resource.Loading -> {
+                    Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
+                }
             }
         })
         job_list_adapter()
         joblistAdapter.setOnClickListner {
-            Log.d("Res","adapter onclick is working")
+            Log.d("Res", "adapter onclick is working")
             navigate(it)
         }
 
@@ -88,7 +92,7 @@ class Job_fragment : Fragment() {
     }
 
     private fun navigate(it: JobListDataClass) {
-        Log.d("Res","jljljjljjklkl")
+        Log.d("Res", "jljljjljjklkl")
         val action: NavDirections =
             Job_fragmentDirections.actionJobFragmentToJobsDescriptionFragment(it)
         navController.navigate(action)

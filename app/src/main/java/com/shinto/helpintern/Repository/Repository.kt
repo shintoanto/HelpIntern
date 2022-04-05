@@ -18,9 +18,9 @@ class Repository {
     suspend fun getJobList(): Response<List<JobListDataClass>> =
         RetrofitInstance.retrofitIntace.JobList()
 
-    suspend fun postUserRegistration(userRegistration: UserRegistration): Response<UserRegistrationResponse> {
-        return RetrofitInstance.retrofitIntace.userRegister(userRegistration)
-    }
+//    suspend fun postUserRegistration(userRegistration: UserRegistration): Response<UserRegistrationResponse> {
+//        return RetrofitInstance.retrofitIntace.userRegister(userRegistration)
+//    }
 
     suspend fun getAccomodationList(): Response<List<AccomodationDataClassItem>> =
         RetrofitInstance.retrofitIntace.userAccomodationListApi()
@@ -28,4 +28,8 @@ class Repository {
     suspend fun userServiceLists(): Response<List<ServiceListItem>> =
         RetrofitInstance.retrofitIntace.serviceList()
 
+    suspend fun postUserRegistration(userRegistration: UserRegistration): Response<UserRegistrationResponse> {
+        return RetrofitInstance.retrofitIntace.userRegister(userRegistration)
+    }
 }
+

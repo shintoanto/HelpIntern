@@ -27,8 +27,10 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
 
     var userLoginResponse: MutableLiveData<Response<UserLogin>> = MutableLiveData()
     var joblistResponse: MutableLiveData<Resource<List<JobListDataClass>>> = MutableLiveData()
+
     var registerResponse: MutableLiveData<Response<UserRegistrationResponse>> =
         MutableLiveData()
+
     val accomodationResponse: MutableLiveData<Resource<List<AccomodationDataClassItem>>> =
         MutableLiveData()
     val serviceResponse: MutableLiveData<Resource<List<ServiceListItem>>> = MutableLiveData()
@@ -170,6 +172,20 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             serviceResponse.postValue(Resource.Loading())
             val serviceRes = repository.userServiceLists()
             serviceResponse.postValue(handleServiceResponse(serviceRes))
+        }
+    }
+
+    fun registration(userRegistration: UserRegistration) {
+        viewModelScope.launch {
+            val response: Response<UserRegistrationResponse> =
+                repository.postUserRegistration(userRegistration)
+            registerResponse.value = response
+
+            if (response.isSuccessful) {
+                Log.d("Res", response.toString())
+            } else {
+                Log.d("Res", "error is :" + response.code().toString())
+            }
         }
     }
 

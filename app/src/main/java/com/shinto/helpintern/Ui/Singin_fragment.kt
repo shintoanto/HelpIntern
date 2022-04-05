@@ -1,22 +1,19 @@
 package com.shinto.helpintern.Ui
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.shinto.helpintern.Data.Post.UserLogin
 import com.shinto.helpintern.MainViewModel
 import com.shinto.helpintern.Model.ViewModelFactory
@@ -24,13 +21,12 @@ import com.shinto.helpintern.R
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
-import kotlinx.coroutines.launch
-import java.lang.Exception
 
 
 class singin_fragment : Fragment() {
 
-   // private lateinit var auth: FirebaseAuth
+    // private lateinit var auth: FirebaseAuth
+    lateinit var navController: NavController
     private var _binding: FragmentSinginFragmentBinding? = null
     private val binding get() = _binding
     private lateinit var viewModel: MainViewModel
@@ -47,14 +43,21 @@ class singin_fragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Initialize Firebase Auth
-      //  auth = Firebase.auth
+        //  auth = Firebase.auth
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentSinginFragmentBinding.inflate(inflater, container, false)
+
+        val repository = Repository()
+        navController = findNavController()
+        val viewModelFactory = ViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
         binding?.singinBtn?.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_welcome_screen_to_singin_fragment)
         }
@@ -64,9 +67,6 @@ class singin_fragment : Fragment() {
         binding?.singUpBtn?.setOnClickListener {
             view?.findNavController()?.navigate(R.id.signup)
         }
-        val repository = Repository()
-        val viewModelFactory = ViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
 
 //        viewModel.userLoginResponse.observe(viewLifecycleOwner, Observer { response ->
@@ -85,7 +85,7 @@ class singin_fragment : Fragment() {
             when (loginResponse) {
                 is Resource.Success -> {
                     viewModel.saveUserDetails(loginResponse.data?.refreshToken!!)
-                   // val action =
+                    // val action =
                 }
             }
         })
@@ -101,6 +101,7 @@ class singin_fragment : Fragment() {
             }
             viewModel.isEmailValid = true
         })
+
         viewModel.passwordLogIN.observe(viewLifecycleOwner, Observer { passwordResponse ->
             if (passwordResponse.isNullOrEmpty()) {
                 binding?.passwordEditext?.error = "Field is required"
@@ -111,81 +112,21 @@ class singin_fragment : Fragment() {
         })
 
 //        binding?.imgSignIn?.setOnClickListener {
-//            Log.d("Res","sign in working")
+//            Log.d("Res", "sign in working")
+//            //Log.d("Res",s.toString())
 //            if (viewModel.isEmailValid && viewModel.isPassword) {
 //                val logInDetails = UserLogin(viewModel.email.value, viewModel.password.value)
 //                viewModel.logInData(logInDetails)
 //            } else {
 //                Log.d("Res", "login not work")
+//                Toast.makeText(context,"Login not success",Toast.LENGTH_LONG).show()
 //            }
 //        }
-
-
-//        emailFocusChangeListner()
-//        passwordFocusChangeListner()
 
 
         return binding?.root!!
     }
 
-
-//    private fun emailFocusChangeListner() {
-//        binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
-//            if (!focused) {
-//                binding?.emailContainer?.helperText = validEmail()
-//            }
-//        }
-//    }
-//
-//    private fun validEmail(): String? {
-//        val emailText = binding?.emailEditext?.text.toString()
-//        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-//            return "Invalid Email Address"
-//        }
-//        return null
-//    }
-//
-//    private fun passwordFocusChangeListner() {
-//        binding?.passwordEditext?.setOnFocusChangeListener { _, focused ->
-//            if (!focused) {
-//                binding?.passwordContainer?.helperText = validPassword()
-//            }
-//        }
-//    }
-//
-//    private fun validPassword(): String? {
-//        val passwordText = binding?.passwordEditext?.text.toString()
-//        if (passwordText.length < 8) {
-//            return "Minimum 8 character"
-//        }
-//        if (!passwordText.matches(".*[A-Z].*".toRegex())) {
-//            return "Must contain 1 upper case charectore"
-//        }
-//        if (!passwordText.matches(".*[a-z].*".toRegex())) {
-//            return "Must contain 1 small case charectore"
-//        }
-//        if (!passwordText.matches(".*[@#\$%^&+=].*".toRegex())) {
-//            return "Must contain 1 lower-case Character"
-//        }
-//        return null
-//    }
-
-
-//        private fun usernameFocusChangeListner() {
-//        _binding?.emailEditext?.setOnFocusChangeListener { _, focused ->
-//            if (!focused) {
-//                _binding!!.emailContainer.helperText = validUser()
-//            }
-//        }
-//    }
-//
-//    private fun validUser(): String? {
-//        val emailText = _binding?.passwordEditext?.text.toString()
-//        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-//            return "Invalid user Address"
-//        }
-//        return null
-//    }
 
     fun reload() {
         Log.d("res", "hail")
@@ -207,9 +148,9 @@ class singin_fragment : Fragment() {
         snackbar.show()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
 
 }

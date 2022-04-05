@@ -38,11 +38,9 @@ class signup : Fragment() {
 
         val repository = Repository()
         val viewModelFactory = ViewModelFactory(repository)
-        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         binding.users = viewModel
         navController = findNavController()
-
-
 
 
 //        val firstName = binding.firstEditxt.text.toString()
@@ -54,10 +52,29 @@ class signup : Fragment() {
 //        val rePassword = binding.rePasswordEditext.text.toString()
 
 
-        Log.d("Res", "signup fragment")
-//        binding.imgSignIn.setOnClickListener {
-//            signUp()
-//        }
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.registration(
+            UserRegistration(
+                email = "shintops@outlook.com",
+                first_name = "Shi pa",
+                last_name = "PnA",
+                phone_number = "98qq5137135",
+                password = "95ds39qw915795",
+                repassword = "95ds39qw915795",
+                username = "shintoanto"
+            )
+        )
+        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Res", response.body().toString())
+                Log.d("Res", response.code().toString())
+                Log.d("Res", response.message())
+                Log.d("Res",response.toString())
+            } else {
+                //   Toast.makeText(con text, response.code(), Toast.LENGTH_LONG).show()
+                Log.d("Res", "Not working" + response.message())
+            }
+        })
 
 //        emailFocusChangeListner()
 //        passwordFocusChangeListner()
@@ -68,6 +85,8 @@ class signup : Fragment() {
 //        binding.registerImageBtn.setOnClickListener {
 //            regristerProfilePictureFun()
 //        }
+
+
         viewModel.email.observe(viewLifecycleOwner, Observer {
             Log.d("Res", "susnnnn")
             if (!Patterns.EMAIL_ADDRESS.matcher(it).matches()) {
@@ -161,50 +180,69 @@ class signup : Fragment() {
             }
             viewModel.isRepassword = true
         })
-        viewModel.signUp.observe(viewLifecycleOwner, Observer { responce ->
-            when(responce){
-                is Resource.Success ->{
-                    hideProgressBar()
-                    responce.data?.let { res ->
-                        Log.i("ServerResponse", res)
-                        Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
-                    }
-
-
-                }
-                is Resource.Loading ->{
-                    showProgressBar()
-                }
-            }
-        })
-
+//        viewModel.signUp.observe(viewLifecycleOwner, Observer { responce ->
+//            when (responce) {
+//                is Resource.Success -> {
+//                    hideProgressBar()
+//                    responce.data?.let { res ->
+//                        Log.i("ServerResponse", res)
+//                        Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//                is Resource.Loading -> {
+//                    showProgressBar()
+//                }
+//                is Resource.Error -> {
+//                    Toast.makeText(context, "Something error", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        })
         binding.imgSignIn.setOnClickListener {
-            Log.d("Res", "imgSigniinBTNNn")
-            if (viewModel.isEmailValid && viewModel.isPassword && viewModel.isRepassword && viewModel.isUserName) {
-                Log.d("Res", "imgSigniin")
-                val reg =
-                    UserRegistration(
-                        viewModel.email.value!!,
-                        viewModel.first_name.value!!,
-                        viewModel.last_name.value!!,
-                        viewModel.password.value!!,
-                        viewModel.repassword.value!!,
-                        viewModel.username.value!!,
-                        viewModel.phone_number.value!!
-                    )
-                viewModel.signUpRegistrationData(reg)
-                Log.d("Res", reg.toString())
-            }
+            signUp()
         }
+
+//        binding.imgSignIn.setOnClickListener {
+//            Log.d("Res", "imgSigniinBTNNn")
+//            if (viewModel.isEmailValid && viewModel.isPassword && viewModel.isRepassword && viewModel.isUserName) {
+//                Log.d("Res", "imgSigniin")
+//                val reg =
+//                    UserRegistration(
+//                        viewModel.email.value!!,
+//                        viewModel.first_name.value!!,
+//                        viewModel.last_name.value!!,
+//                        viewModel.password.value!!,
+//                        viewModel.repassword.value!!,
+//                        viewModel.username.value!!,
+//                        viewModel.phone_number.value!!
+//                    )
+//                viewModel.signUpRegistrationData(reg)
+//                Log.d("Res", reg.toString())
+//            } else {
+//                Toast.makeText(context, "Registration not done", Toast.LENGTH_LONG).show()
+//            }
+//        }
         Log.d("Res", "signup fragment2 ")
         return binding.root
     }
+
     private fun showProgressBar() {
         binding.progBar.visibility = View.VISIBLE
     }
 
     private fun hideProgressBar() {
         binding.progBar.visibility = View.INVISIBLE
+    }
+    private fun signUp() {
+        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Log.d("Res", response.body().toString())
+                Log.d("Res", response.code().toString())
+                Log.d("Res", response.message())
+            } else {
+                //   Toast.makeText(context, response.code(), Toast.LENGTH_LONG).show()
+                Log.d("Res", "Not working" + response.message())
+            }
+        })
     }
 
 //    private fun regristerProfilePictureFun() {
