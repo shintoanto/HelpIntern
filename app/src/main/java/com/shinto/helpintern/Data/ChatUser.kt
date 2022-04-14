@@ -7,4 +7,4 @@ import kotlinx.parcelize.Parcelize
 data class ChatUser(
     val name: String,
     val id: String
-):Parcelable
+) : Parcelable
