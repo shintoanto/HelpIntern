@@ -151,7 +151,7 @@
 
 <!--        <argument-->
 <!--            android:name="chatUser"-->
-<!--            app:argType="com.shinto.helpintern.ChatUser" />-->
+<!--            app:argType="com.shinto.helpintern.Data.ChatUser" />-->
 <!--    </fragment>-->
 
 </navigation>

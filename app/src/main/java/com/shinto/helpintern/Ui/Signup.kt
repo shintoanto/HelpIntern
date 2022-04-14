@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -21,6 +22,7 @@ import com.shinto.helpintern.Model.ViewModelFactory
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.FragmentSignupBinding
+import kotlinx.coroutines.launch
 
 class signup : Fragment() {
 
@@ -52,29 +54,29 @@ class signup : Fragment() {
 //        val rePassword = binding.rePasswordEditext.text.toString()
 
 
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.registration(
-            UserRegistration(
-                email = "shintops@outlook.com",
-                first_name = "Shi pa",
-                last_name = "PnA",
-                phone_number = "98qq5137135",
-                password = "95ds39qw915795",
-                repassword = "95ds39qw915795",
-                username = "shintoanto"
-            )
-        )
-        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
-            if (response.isSuccessful) {
-                Log.d("Res", response.body().toString())
-                Log.d("Res", response.code().toString())
-                Log.d("Res", response.message())
-                Log.d("Res",response.toString())
-            } else {
-                //   Toast.makeText(con text, response.code(), Toast.LENGTH_LONG).show()
-                Log.d("Res", "Not working" + response.message())
-            }
-        })
+//        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+//        viewModel.registration(
+//            UserRegistration(
+//                email = "shintopsss@outlook.com",
+//                first_name = "Shizspa",
+//                last_name = "PnA",
+//                phone_number = "95ss137135",
+//                password = "95dz3x9qw915795",
+//                repassword = "95dz3x9qw915795",
+//                username = "shintzdoanto"
+//            )
+//        )
+//        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+//            if (response.isSuccessful) {
+//                Log.d("Res", response.body().toString())
+//                Log.d("Res", response.code().toString())
+//                Log.d("Res", response.message())
+//                Log.d("Res",response.toString())
+//            } else {
+//                //   Toast.makeText(con text, response.code(), Toast.LENGTH_LONG).show()
+//                Log.d("Res", "Not working" + response.message())
+//            }
+//        })
 
 //        emailFocusChangeListner()
 //        passwordFocusChangeListner()
@@ -88,7 +90,7 @@ class signup : Fragment() {
 
 
         viewModel.email.observe(viewLifecycleOwner, Observer {
-            Log.d("Res", "susnnnn")
+            Log.d("Res", "emil")
             if (!Patterns.EMAIL_ADDRESS.matcher(it).matches()) {
                 binding.emailEdtTxt.error = "Enter your valid email"
                 return@Observer
@@ -100,7 +102,7 @@ class signup : Fragment() {
             viewModel.isEmailValid = true
         })
         viewModel.first_name.observe(viewLifecycleOwner, Observer {
-            Log.d("Res", "imgSigniin")
+            Log.d("Res", "firstname")
             if (it.isNullOrEmpty()) {
                 binding.firstEditxt.error = "This field is required"
                 return@Observer
@@ -113,7 +115,7 @@ class signup : Fragment() {
             viewModel.isFirstName = true
         })
         viewModel.last_name.observe(viewLifecycleOwner, Observer {
-            Log.d("Res", "imgSigniin")
+            Log.d("Res", "lastname")
             if (it.isNullOrEmpty()) {
                 binding.lastEdtTxt.error = "This field is required"
                 return@Observer
@@ -126,7 +128,7 @@ class signup : Fragment() {
             viewModel.isLastName = true
         })
         viewModel.username.observe(viewLifecycleOwner, Observer {
-            Log.d("Res", "imgSigniin")
+            Log.d("Res", "username")
             if (it.isNullOrEmpty()) {
                 binding.usrEdtext.error = "This field is required"
                 return@Observer
@@ -139,7 +141,7 @@ class signup : Fragment() {
             viewModel.isUserName = true
         })
         viewModel.phone_number.observe(viewLifecycleOwner, Observer {
-            Log.d("Res", "imgSigniin")
+            Log.d("Res", "phonenumber")
             if (!it.matches(".*[0-9]".toRegex())) {
                 binding.phNumEdtTxt.error = "Enter your valid phone number"
                 return@Observer
@@ -157,7 +159,7 @@ class signup : Fragment() {
 
         })
         viewModel.password.observe(viewLifecycleOwner, Observer {
-            Log.d("Res", "imgSigniin")
+            Log.d("Res", "password")
             if (it.length < 5) {
                 binding.passwordEditext.error = "minimum 5 characters"
                 return@Observer
@@ -169,7 +171,7 @@ class signup : Fragment() {
             viewModel.isPassword = true
         })
         viewModel.repassword.observe(viewLifecycleOwner, Observer {
-            Log.d("Res", "imgSigniin")
+            Log.d("Res", "repsaword")
             if (it.length < 5) {
                 binding.rePasswordEditext.error = "minimum 5 characters"
                 return@Observer
@@ -180,48 +182,52 @@ class signup : Fragment() {
             }
             viewModel.isRepassword = true
         })
-//        viewModel.signUp.observe(viewLifecycleOwner, Observer { responce ->
-//            when (responce) {
-//                is Resource.Success -> {
-//                    hideProgressBar()
-//                    responce.data?.let { res ->
-//                        Log.i("ServerResponse", res)
-//                        Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//                is Resource.Loading -> {
-//                    showProgressBar()
-//                }
-//                is Resource.Error -> {
-//                    Toast.makeText(context, "Something error", Toast.LENGTH_LONG).show()
-//                }
-//            }
-//        })
-        binding.imgSignIn.setOnClickListener {
-            signUp()
-        }
-
+        viewModel.signUp.observe(viewLifecycleOwner, Observer { responce ->
+            Log.d("Res", "viewmocel.singup.observ")
+            when (responce) {
+                is Resource.Success -> {
+                    hideProgressBar()
+                    responce.data?.let { res ->
+                        Log.i("ServerResponse", res)
+                        Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
+                    }
+                }
+                is Resource.Loading -> {
+                    Log.d("Res", "loading")
+                    showProgressBar()
+                }
+                is Resource.Error -> {
+                    Toast.makeText(context, "Something error", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
 //        binding.imgSignIn.setOnClickListener {
-//            Log.d("Res", "imgSigniinBTNNn")
-//            if (viewModel.isEmailValid && viewModel.isPassword && viewModel.isRepassword && viewModel.isUserName) {
-//                Log.d("Res", "imgSigniin")
-//                val reg =
-//                    UserRegistration(
-//                        viewModel.email.value!!,
-//                        viewModel.first_name.value!!,
-//                        viewModel.last_name.value!!,
-//                        viewModel.password.value!!,
-//                        viewModel.repassword.value!!,
-//                        viewModel.username.value!!,
-//                        viewModel.phone_number.value!!
-//                    )
-//                viewModel.signUpRegistrationData(reg)
-//                Log.d("Res", reg.toString())
-//            } else {
-//                Toast.makeText(context, "Registration not done", Toast.LENGTH_LONG).show()
-//            }
+//            signUp()
 //        }
-        Log.d("Res", "signup fragment2 ")
+
+        binding.imgSignIn.setOnClickListener {
+            lifecycleScope.launch {
+                if (viewModel.isEmailValid && viewModel.isPassword && viewModel.isRepassword && viewModel.isUserName) {
+                    Log.d("Res", "imgSigniin")
+                    val reg =
+                        UserRegistration(
+                            viewModel.email.value!!,
+                            viewModel.first_name.value!!,
+                            viewModel.last_name.value!!,
+                            viewModel.password.value!!,
+                            viewModel.repassword.value!!,
+                            viewModel.username.value!!,
+                            viewModel.phone_number.value!!
+                        )
+                    viewModel.signUpRegistrationData(reg)
+                    Log.d("Res", "success")
+                } else {
+                    Toast.makeText(context, "Registration not done", Toast.LENGTH_LONG).show()
+                    Log.d("Res", "nor done")
+                }
+            }
+            Log.d("Res", "signup fragment2 ")
+        }
         return binding.root
     }
 
@@ -232,6 +238,7 @@ class signup : Fragment() {
     private fun hideProgressBar() {
         binding.progBar.visibility = View.INVISIBLE
     }
+
     private fun signUp() {
         viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
@@ -245,15 +252,15 @@ class signup : Fragment() {
         })
     }
 
-//    private fun regristerProfilePictureFun() {
-//        val registerImage = registerForActivityResult(
-//            ActivityResultContracts.GetContent(),
-//            ActivityResultCallback {
-//                binding.registerImg.setImageURI(it!!)
-//            }
-//        )
-//        registerImage.launch("image/*")
-//    }
+    private fun regristerProfilePictureFun() {
+        val registerImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                binding.registerImg.setImageURI(it!!)
+            }
+        )
+        registerImage.launch("image/*")
+    }
 
 
 }

@@ -118,13 +118,15 @@
             app:srcCompat="@drawable/arrow_right" />
     </RelativeLayout>
 
+
+<!--    app:srcCompat="@drawable/ic_vector_21"-->
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_vector_21" />
+        />
 
     <TextView
         android:id="@+id/singin_btn"

@@ -8,7 +8,7 @@
             name="users"
             type="com.shinto.helpintern.MainViewModel" />
     </data>
-<!--    android:visibilities="@{users.}"-->
+    android:visibilities="@{users.}"
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/progBar"
 
@@ -91,6 +91,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lastEdtTxt"
+                        android:text="@={users.last_name}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -193,7 +194,7 @@
                         android:text="@={users.repassword}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberPassword"
+                        android:inputType="text"
                         android:maxLength="16" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -252,13 +253,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_vector_2" />
 
+<!--        app:srcCompat="@drawable/ic_vector_21"-->
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_vector_21" />
+          />
 
         <ProgressBar
             android:id="@+id/progressBar3"

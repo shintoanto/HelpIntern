@@ -225,13 +225,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_vector_2" />
 
+<!--    app:srcCompat="@drawable/ic_vector_21"-->
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_vector_21" />
+      />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

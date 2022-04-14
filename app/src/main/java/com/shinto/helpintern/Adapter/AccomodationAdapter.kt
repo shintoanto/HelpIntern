@@ -61,7 +61,7 @@ class AccomodationAdapter(
         holder.accomPlace.text = differ.currentList[position].city
         holder.accomFair.text = differ.currentList[position].rentAmount.toString()
         val accomDesc = differ.currentList[position]
-        if (differ.currentList[position].isHeating == true) parent.let {
+        if (differ.currentList[position].isHeating == true) context.let {
             if (context != null) {
                 Glide.with(context)
                     .load(differ.currentList[position].isHeating)
@@ -79,7 +79,7 @@ class AccomodationAdapter(
 
         if (this != null) context?.let {
             Glide.with(it).load(differ.currentList[position].coverPhoto)
-                .apply(RequestOptions().placeholder(R.drawable.home_24).centerCrop())
+                .apply(RequestOptions().placeholder(R.drawable.home).centerCrop())
                 .into(holder.accomPIc)
         }
 

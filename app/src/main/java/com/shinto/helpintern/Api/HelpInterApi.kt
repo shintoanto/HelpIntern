@@ -1,17 +1,15 @@
 package com.shinto.helpintern.Api
 
-import android.util.Log
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.Data.Get.JobListDataClass
-import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.Data.Get.ServiceListItem
 import com.shinto.helpintern.Data.LoginTokenResponse
 import com.shinto.helpintern.Data.Post.UserLogin
+import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.Data.Post.UserRegistrationResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface HelpInterApi {

@@ -31,11 +31,13 @@
                 android:layout_height="match_parent"
                 android:background="#217BF4">
 
+
+<!--                android:background="@drawable/home_24"-->
                 <ImageView
                     android:id="@+id/jobPic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/home_24" />
+                  />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

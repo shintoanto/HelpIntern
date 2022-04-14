@@ -1,4 +1,4 @@
-package com.shinto.helpintern
+package com.shinto.helpintern.Data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
