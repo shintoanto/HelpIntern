@@ -35,6 +35,7 @@ class Service_fragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = ServiceFragmentBinding.inflate(inflater, container, false)
 
+
         val repository = Repository()
         navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)

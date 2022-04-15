@@ -32,7 +32,6 @@ class accomodation_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAccomodationFragmentBinding.inflate(inflater, container, false)
-
         val repository = Repository()
         navController = findNavController()
         val viewModelFactory = ViewModelFactory(repository)

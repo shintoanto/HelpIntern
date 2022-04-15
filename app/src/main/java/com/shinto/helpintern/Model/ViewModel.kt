@@ -38,6 +38,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     var signUp: MutableLiveData<Resource<String>> = MutableLiveData()
     var logIn: MutableLiveData<Resource<LoginTokenResponse>> = MutableLiveData()
 
+    var progress = ObservableField<Boolean>()
     var mainView = ObservableField(true)
 
     val email = MutableLiveData<String>()
@@ -236,6 +237,14 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             }
         }
         return Resource.Error(response.message())
+    }
+
+    fun progressBar(value: Boolean) {
+        if (value) {
+            this.progress.set(true)
+        } else {
+            this.progress.set(false)
+        }
     }
 
 }

@@ -23,7 +23,7 @@ class jobs_description_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        val detailedFactory = JobDescriptionFactory(args.jobList)
+        val detailedFactory = JobDescriptionFactory(args.JobList)
         viewModel = ViewModelProvider(this, detailedFactory).get(JobDescriptionDetails::class.java)
 
         binding = FragmentJobsDescriptionFragmentBinding.inflate(inflater, container, false)

@@ -44,7 +44,6 @@ class signup : Fragment() {
         binding.users = viewModel
         navController = findNavController()
 
-
 //        val firstName = binding.firstEditxt.text.toString()
 //        val secondName = binding.lastEdtTxt.text.toString()
 //        val userName = binding.usrEdtext.text.toString()
@@ -87,6 +86,7 @@ class signup : Fragment() {
 //        binding.registerImageBtn.setOnClickListener {
 //            regristerProfilePictureFun()
 //        }
+
 
 
         viewModel.email.observe(viewLifecycleOwner, Observer {
@@ -182,22 +182,24 @@ class signup : Fragment() {
             }
             viewModel.isRepassword = true
         })
+
         viewModel.signUp.observe(viewLifecycleOwner, Observer { responce ->
-            Log.d("Res", "viewmocel.singup.observ")
             when (responce) {
                 is Resource.Success -> {
-                    hideProgressBar()
+                    Log.d("Res", "viewmocel.singup.observ -- $responce.toString()")
+                    viewModel.progressBar(false)
                     responce.data?.let { res ->
-                        Log.i("ServerResponse", res)
+                        Log.d("Res", res)
                         Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
                     }
                 }
                 is Resource.Loading -> {
                     Log.d("Res", "loading")
-                    showProgressBar()
+                    viewModel.progressBar(true)
                 }
                 is Resource.Error -> {
-                    Toast.makeText(context, "Something error", Toast.LENGTH_LONG).show()
+                    viewModel.progressBar(false)
+                    Log.d("Res", "resourceError")
                 }
             }
         })
@@ -220,14 +222,14 @@ class signup : Fragment() {
                             viewModel.phone_number.value!!
                         )
                     viewModel.signUpRegistrationData(reg)
-                    Log.d("Res", "success")
+                    Log.d("Res", "success$reg")
                 } else {
                     Toast.makeText(context, "Registration not done", Toast.LENGTH_LONG).show()
                     Log.d("Res", "nor done")
                 }
             }
-            Log.d("Res", "signup fragment2 ")
         }
+
         return binding.root
     }
 

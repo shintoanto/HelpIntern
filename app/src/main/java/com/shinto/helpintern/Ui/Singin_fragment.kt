@@ -109,6 +109,7 @@ class singin_fragment : Fragment() {
             }
             viewModel.isPasswordValied = true
             Log.i("password", viewModel.password.value.toString())
+
         })
 
 //        binding?.imgSignIn?.setOnClickListener {
