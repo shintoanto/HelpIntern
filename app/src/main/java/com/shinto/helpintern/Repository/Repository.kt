@@ -4,7 +4,7 @@ import com.shinto.helpintern.Api.RetrofitInstance
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Data.Get.ServiceListItem
-import com.shinto.helpintern.Data.LoginTokenResponse
+import com.shinto.helpintern.Data.Post.LoginTokenResponse
 import com.shinto.helpintern.Data.Post.UserLogin
 import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.Data.Post.UserRegistrationResponse

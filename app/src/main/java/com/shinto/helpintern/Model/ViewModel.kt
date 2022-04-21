@@ -10,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.shinto.helpintern.Data.Get.AccomodationDataClassItem
 import com.shinto.helpintern.Data.Get.JobListDataClass
 import com.shinto.helpintern.Data.Get.ServiceListItem
-import com.shinto.helpintern.Data.LoginTokenResponse
+import com.shinto.helpintern.Data.Post.LoginTokenResponse
 import com.shinto.helpintern.Data.Post.UserLogin
 import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.Data.Post.UserRegistrationResponse
@@ -19,11 +19,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
-import java.util.*
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
-    private lateinit var sharedPreferences: SharedPreferences
+    private var sharedPreferences: SharedPreferences? = null
 
     var userLoginResponse: MutableLiveData<Response<UserLogin>> = MutableLiveData()
     var joblistResponse: MutableLiveData<Resource<List<JobListDataClass>>> = MutableLiveData()
@@ -50,6 +49,11 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val repassword = MutableLiveData<String>()
     val username = MutableLiveData<String>()
 
+    // Login check
+    var logInEmain = MutableLiveData<String>()
+    var isEmailValidLogin: Boolean = false
+
+    // Signup check
     var isEmailValid: Boolean = false
     var isFirstName: Boolean = false
     var isLastName: Boolean = false
@@ -58,7 +62,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     var isPassword: Boolean = false
     var isRepassword: Boolean = false
 
-    var logInEmain = MutableLiveData<String>()
+
     var passwordLogIN = MutableLiveData<String>()
     var isPasswordValied = false
 
@@ -72,21 +76,20 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         getJobList()
         accomodationList()
         userList()
-       // checkingUser()
-
+        checkingUser()
     }
 
     fun checkingUser() {
         isValidated.value =
-            sharedPreferences.contains("isLoggedIn") && (sharedPreferences.getBoolean(
+            sharedPreferences?.contains("isLoggedIn") == true && (sharedPreferences!!.getBoolean(
                 "isLoggedIn",
                 false
             ))
     }
 
     fun saveUserDetails(token: String) {
-        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
-        sharedPreferences.edit().putString("token", token).apply()
+        sharedPreferences?.edit()?.putBoolean("isLoggedIn", true)?.apply()
+        sharedPreferences?.edit()?.putString("token", token)?.apply()
     }
 
     fun mainVisibility(setCondition: Boolean) {

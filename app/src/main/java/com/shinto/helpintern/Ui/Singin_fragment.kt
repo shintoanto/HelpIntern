@@ -21,6 +21,7 @@ import com.shinto.helpintern.R
 import com.shinto.helpintern.Repository.Repository
 import com.shinto.helpintern.Resource
 import com.shinto.helpintern.databinding.FragmentSinginFragmentBinding
+import com.shinto.helpintern.toast
 
 
 class singin_fragment : Fragment() {
@@ -80,26 +81,47 @@ class singin_fragment : Fragment() {
 //            }
 //        })
 
-        viewModel.logIn.observe(viewLifecycleOwner, Observer { loginResponse ->
-
-            when (loginResponse) {
+        viewModel.logIn.observe(viewLifecycleOwner, Observer { response ->
+            when (response) {
                 is Resource.Success -> {
-                    viewModel.saveUserDetails(loginResponse.data?.refreshToken!!)
-                    // val action =
+                    Log.i("refresh", response.data!!.accessToken)
+//                    val refreshToken = response.data.refreshToken
+//                    val accessToken = response.data.accessToken
+                    viewModel.progressBar(false)
+                    //   viewModel.mainViewVisibility(true)
+                    response.data.let { message ->
+                        Log.i("LogInResponse", message.toString())
+                        //   toast("Log In successful")
+                    }
+                    viewModel.saveUserDetails(response.data.refreshToken)
+//                    val action = Singin.actionLogInFragmentToBottomBarActivity()
+//                    navController.navigate(action)
+                }
+                is Resource.Error -> {
+                    viewModel.progressBar(false)
+                    //    viewModel.mainViewVisibility(true)
+                    //  toast()
+                }
+                is Resource.Loading -> {
+                    viewModel.progressBar(true)
+                    //   viewModel.mainViewVisibility(false)
+                    Log.i("LogInResponse", "Loading")
                 }
             }
         })
 
-        viewModel.logInEmain.observe(viewLifecycleOwner, Observer { emailResponse ->
-            if (!Patterns.EMAIL_ADDRESS.matcher(emailResponse).matches()) {
+
+        viewModel.logInEmain.observe(viewLifecycleOwner, Observer {
+            Log.d("Res","loginemain")
+            if (!Patterns.EMAIL_ADDRESS.matcher(it).matches()) {
                 binding?.emailEditext?.error = "Invalid Email Id"
                 return@Observer
             }
-            if (emailResponse.isNullOrEmpty()) {
+            if (it.isNullOrEmpty()) {
                 binding?.emailEditext?.error = "Field is required"
                 return@Observer
             }
-            viewModel.isEmailValid = true
+            viewModel.isEmailValidLogin= true
         })
 
         viewModel.passwordLogIN.observe(viewLifecycleOwner, Observer { passwordResponse ->
@@ -112,17 +134,19 @@ class singin_fragment : Fragment() {
 
         })
 
-//        binding?.imgSignIn?.setOnClickListener {
-//            Log.d("Res", "sign in working")
-//            //Log.d("Res",s.toString())
-//            if (viewModel.isEmailValid && viewModel.isPassword) {
-//                val logInDetails = UserLogin(viewModel.email.value, viewModel.password.value)
-//                viewModel.logInData(logInDetails)
-//            } else {
-//                Log.d("Res", "login not work")
-//                Toast.makeText(context,"Login not success",Toast.LENGTH_LONG).show()
-//            }
-//        }
+        binding?.imgSignIn?.setOnClickListener {
+            Log.d("Res", "sign in working")
+            //Log.d("Res",s.toString())
+            Log.d("Res", viewModel.isEmailValidLogin.toString())
+            Log.d("Res", viewModel.isPasswordValied.toString())
+            if (viewModel.isEmailValidLogin && viewModel.isPasswordValied) {
+                val logInDetails = UserLogin(viewModel.email.value, viewModel.password.value)
+                viewModel.logInData(logInDetails)
+            } else {
+                Log.d("Res", "login not work")
+                Toast.makeText(context, "Login not success", Toast.LENGTH_LONG).show()
+            }
+        }
 
 
         return binding?.root!!

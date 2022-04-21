@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/signup"
-        android:name="com.shinto.helpintern.Ui.signup"
+        android:name="com.shinto.helpintern.Ui.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
         <action
@@ -126,6 +126,15 @@
         <argument
             android:name="serviceArg"
             app:argType="com.shinto.helpintern.Data.Get.ServiceListItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.shinto.helpintern.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" >
+        <action
+            android:id="@+id/action_testFragment_to_signup"
+            app:destination="@id/signup" />
     </fragment>
     <!--    <fragment-->
 <!--        android:id="@+id/loginFragment"-->

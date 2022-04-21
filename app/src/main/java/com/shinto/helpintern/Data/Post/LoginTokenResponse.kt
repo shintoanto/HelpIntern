@@ -1,4 +1,4 @@
-package com.shinto.helpintern.Data
+package com.shinto.helpintern.Data.Post
 
 import com.google.gson.annotations.SerializedName
 
