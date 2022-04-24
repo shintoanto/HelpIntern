@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.shinto.helpintern.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6F6F6">
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="13dp"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/linBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    style="@style/heading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:shadowColor="#0C0000"
+                    android:shadowRadius="2"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_location_black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_message_black" />
+            </LinearLayout>
+
+            <SearchView
+                android:id="@+id/servSearch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <ListView
+                android:id="@+id/ser_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:text="Jobs Applied"
+                android:textColor="@color/black"
+                android:textSize="34sp" />
+
+            <include layout="@layout/jobs_applied_recycler_card" />
+            <include layout="@layout/jobs_applied_recycler_card" />
+            <include layout="@layout/jobs_applied_recycler_card" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/jobAppledRecycler"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="574dp"-->
+<!--                android:background="@color/white" />-->
+
+        </LinearLayout>
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progBar"-->
+<!--            style="@style/Widget.AppCompat.ProgressBar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:indeterminateTint="#CA10DF"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/linearLayout4"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/linearLayout4"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/linearLayout4" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

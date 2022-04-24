@@ -10,13 +10,10 @@ import com.shinto.helpintern.R
 import com.shinto.helpintern.databinding.FragmentWelcomeScreenBinding
 
 class Welcome_screen : Fragment() {
+
     private var _binding: FragmentWelcomeScreenBinding? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     private val binding get() = _binding!!
+
 // This property is only valid between onCreateView and
 // onDestroyView.
 

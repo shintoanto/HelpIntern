@@ -35,7 +35,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val serviceResponse: MutableLiveData<Resource<List<ServiceListItem>>> = MutableLiveData()
 
     var signUp: MutableLiveData<Resource<String>> = MutableLiveData()
-    var logIn: MutableLiveData<Resource<LoginTokenResponse>> = MutableLiveData()
+
 
     var progress = ObservableField<Boolean>()
     var mainView = ObservableField(true)
@@ -50,8 +50,12 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val username = MutableLiveData<String>()
 
     // Login check
+    var logIn: MutableLiveData<Resource<LoginTokenResponse>> = MutableLiveData()
     var logInEmain = MutableLiveData<String>()
     var isEmailValidLogin: Boolean = false
+
+    var passwordLogIN = MutableLiveData<String>()
+    var isPasswordValied = false
 
     // Signup check
     var isEmailValid: Boolean = false
@@ -63,8 +67,7 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     var isRepassword: Boolean = false
 
 
-    var passwordLogIN = MutableLiveData<String>()
-    var isPasswordValied = false
+
 
     val isValidated = MutableLiveData<Boolean>()
 

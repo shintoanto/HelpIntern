@@ -6,7 +6,7 @@
     app:startDestination="@id/welcome_screen">
     <fragment
         android:id="@+id/singin_fragment"
-        android:name="com.shinto.helpintern.Ui.singin_fragment"
+        android:name="com.shinto.helpintern.Ui.SigninFragment"
         android:label="fragment_singin_fragment"
         tools:layout="@layout/fragment_singin_fragment">
         <action
@@ -90,7 +90,13 @@
         <action
             android:id="@+id/action_home_scrn_to_service_fragment"
             app:destination="@id/service_fragment" />
-<!--        <action-->
+        <action
+            android:id="@+id/action_home_scrn_to_job_appled_nav"
+            app:destination="@id/job_appled_nav" />
+        <action
+            android:id="@+id/action_home_scrn_to_profile_view"
+            app:destination="@id/profile_view" />
+        <!--        <action-->
 <!--            android:id="@+id/action_home_scrn_to_chatLogin"-->
 <!--            app:destination="@id/chatLogin" />-->
     </fragment>
@@ -127,15 +133,15 @@
             android:name="serviceArg"
             app:argType="com.shinto.helpintern.Data.Get.ServiceListItem" />
     </fragment>
-    <fragment
-        android:id="@+id/testFragment"
-        android:name="com.shinto.helpintern.TestFragment"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" >
-        <action
-            android:id="@+id/action_testFragment_to_signup"
-            app:destination="@id/signup" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/testFragment"-->
+<!--        android:name="com.shinto.helpintern.TestFragm"-->
+<!--        android:label="fragment_test"-->
+<!--        tools:layout="@layout/frame" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_testFragment_to_signup"-->
+<!--            app:destination="@id/signup" />-->
+<!--    </fragment>-->
     <!--    <fragment-->
 <!--        android:id="@+id/loginFragment"-->
 <!--        android:name="com.shinto.helpintern.ui.login.LoginFragment"-->
@@ -162,5 +168,18 @@
 <!--            android:name="chatUser"-->
 <!--            app:argType="com.shinto.helpintern.Data.ChatUser" />-->
 <!--    </fragment>-->
+    <fragment
+        android:id="@+id/job_appled_nav"
+        android:name="com.shinto.helpintern.Ui.JobAppledPortal"
+        android:label="job_appliedFragment"
+        tools:layout="@layout/job_applied_portal" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_view"
+        android:name="com.shinto.helpintern.Ui.ProfileView"
+        android:label="profile_nav"
+        tools:layout="@layout/profile_view" >
+    </fragment>
 
 </navigation>

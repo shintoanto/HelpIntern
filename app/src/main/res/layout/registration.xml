@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="users"
-            type="com.shinto.helpintern.MainViewModel" />
-    </data>
-<!--    android:visibilities="@{users.}"-->
+    <!--    <data>-->
+    <!--        <variable-->
+    <!--            name="users"-->
+    <!--            type="com.shinto.helpintern.MainViewModel" />-->
+    <!--    </data>-->
+    <!--        android:visibilities="@{users.}"-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/progBar"
         android:layout_width="match_parent"
@@ -47,12 +47,12 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/txtServ"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Create\nAccount"
+                    android:text="Service Registration"
                     android:textColor="@color/black"
-                    android:textSize="48sp"
+                    android:textSize="38sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -66,9 +66,9 @@
                     app:startIconContentDescription="emailicon"
                     app:startIconDrawable="@drawable/username">
 
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/firstEditxt"
-                        android:text="@={users.first_name}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -89,7 +89,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lastEdtTxt"
-                        android:text="@={users.last_name}"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -109,7 +109,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/usrEdtext"
-                        android:text="@={users.username}"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -129,7 +129,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/emailEdtTxt"
-                        android:text="@={users.email}"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
@@ -149,7 +149,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/phNumEdtTxt"
-                        android:text="@={users.phone_number}"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
@@ -169,7 +169,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/passwordEditext"
-                        android:text="@={users.password}"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -189,27 +189,26 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/rePasswordEditext"
-                        android:text="@={users.repassword}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:maxLength="16" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/registerImg"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:background="@drawable/common_google_signin_btn_text_light_normal_background"-->
-<!--                    android:contentDescription="Registration Image" />-->
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/registerImg"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:background="@drawable/common_google_signin_btn_text_light_normal_background"-->
+                <!--                    android:contentDescription="Registration Image" />-->
 
-<!--                <Button-->
-<!--                    android:id="@+id/registerImageBtn"-->
-<!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Select your image"-->
-<!--                    android:textAllCaps="false" />-->
+                <!--                <Button-->
+                <!--                    android:id="@+id/registerImageBtn"-->
+                <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Select your image"-->
+                <!--                    android:textAllCaps="false" />-->
 
 
                 <RelativeLayout
@@ -251,14 +250,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_vector_2" />
 
-<!--        app:srcCompat="@drawable/ic_vector_21"-->
+        <!--        app:srcCompat="@drawable/ic_vector_21"-->
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-          />
+            />
 
         <ProgressBar
             android:id="@+id/progressBar3"

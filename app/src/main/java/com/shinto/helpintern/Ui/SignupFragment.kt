@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.shinto.helpintern.Data.Post.UserRegistration
 import com.shinto.helpintern.MainViewModel
@@ -206,26 +207,27 @@ class SignupFragment : Fragment() {
         })
 
         binding?.imgSignIn?.setOnClickListener {
-            lifecycleScope.launch {
-                if (viewModel.isEmailValid && viewModel.isPassword && viewModel.isRepassword && viewModel.isUserName) {
-                    Log.d("Res", "imgSigniin")
-                    val reg =
-                        UserRegistration(
-                            viewModel.email.value!!,
-                            viewModel.first_name.value!!,
-                            viewModel.last_name.value!!,
-                            viewModel.password.value!!,
-                            viewModel.phone_number.value!!,
-                            viewModel.repassword.value!!,
-                            viewModel.username.value!!
-                        )
-                    viewModel.signUpRegistrationData(reg)
-                    Log.d("Res", "success$reg")
-                } else {
-                    Toast.makeText(context, "Registration not done", Toast.LENGTH_LONG).show()
-                    Log.d("Res", "nor done")
-                }
-            }
+//            lifecycleScope.launch {
+//                if (viewModel.isEmailValid && viewModel.isPassword && viewModel.isRepassword && viewModel.isUserName) {
+//                    Log.d("Res", "imgSigniin")
+//                    val reg =
+//                        UserRegistration(
+//                            viewModel.email.value!!,
+//                            viewModel.first_name.value!!,
+//                            viewModel.last_name.value!!,
+//                            viewModel.password.value!!,
+//                            viewModel.phone_number.value!!,
+//                            viewModel.repassword.value!!,
+//                            viewModel.username.value!!
+//                        )
+//                    viewModel.signUpRegistrationData(reg)
+//                    Log.d("Res", "success$reg")
+//                } else {
+//                    Toast.makeText(context, "Registration not done", Toast.LENGTH_LONG).show()
+//                    Log.d("Res", "nor done")
+//                }
+//            }
+            it.findNavController().navigate(SignupFragmentDirections.actionSignupToHomeScrn())
         }
 
         return binding?.root

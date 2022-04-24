@@ -35,6 +35,14 @@ class home_scrn : Fragment() {
         binding?.cardView2?.setOnClickListener { view: View ->
             view.findNavController().navigate(home_scrnDirections.actionHomeScrnToServiceFragment())
         }
+
+        binding?.cardJobApplied?.setOnClickListener { view: View ->
+            view.findNavController().navigate(home_scrnDirections.actionHomeScrnToJobAppledNav())
+        }
+        binding?.imgAccoulnt?.setOnClickListener{
+            it.findNavController().navigate(home_scrnDirections.actionHomeScrnToProfileView())
+        }
+
 //        binding?.mapBtn?.setOnClickListener {
 //            val intent = Intent(context, MapsActivity::class.java)
 //            startActivity(intent)

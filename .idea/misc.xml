@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/drawable/person.xml" value="0.1335" />
         <entry key="app/src/main/res/drawable/round_btn.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/username.xml" value="0.1335" />
+        <entry key="app/src/main/res/font/ubuntu_medium.xml" value="0.221875" />
         <entry key="app/src/main/res/layout-v23/fragment_singin_fragment.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/accomodation_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/accomodation_card_view.xml" value="0.16032492518170158" />
@@ -36,7 +37,7 @@
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/fragment_channel.xml" value="0.15989739204788372" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_home_scrn.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_home_scrn.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_job_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_jobs_description_fragment.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.15989739204788372" />
@@ -44,8 +45,12 @@
         <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_singin_fragment.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_welcome_screen.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/job_applied_portal.xml" value="0.19166666666666668" />
+        <entry key="app/src/main/res/layout/jobs_applied_recycler_card.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/jobscardview.xml" value="0.2" />
         <entry key="app/src/main/res/layout/layout_signin.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/profile_view.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/registration.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/sample.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/service_description.xml" value="0.15989739204788372" />
         <entry key="app/src/main/res/layout/service_discription_fragment.xml" value="0.15989739204788372" />
