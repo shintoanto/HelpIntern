@@ -42,7 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_jobs_description_fragment.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.15989739204788372" />
         <entry key="app/src/main/res/layout/fragment_s_blank.xml" value="0.17604166666666668" />
-        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_singin_fragment.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_welcome_screen.xml" value="0.18" />
         <entry key="app/src/main/res/layout/job_applied_portal.xml" value="0.19166666666666668" />
@@ -57,6 +57,7 @@
         <entry key="app/src/main/res/layout/service_fragment.xml" value="0.18" />
         <entry key="app/src/main/res/layout/servicecard.xml" value="0.15989739204788372" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.15989739204788372" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.19166666666666668" />
       </map>
     </option>
   </component>

@@ -35,4 +35,7 @@ interface HelpInterApi {
     @GET("user/service-list-filter")
     suspend fun serviceList(): Response<List<ServiceListItem>>
 
+    @GET("/accommodation_provider/search")
+    suspend fun accomodationSearch(): Response<List<>>
+
 }

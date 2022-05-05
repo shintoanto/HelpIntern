@@ -76,6 +76,7 @@ class SigninFragment : Fragment() {
                         Log.i("LogInResponse", message.toString())
                         //   toast("Log In successful")
                     }
+
                     val action = SigninFragmentDirections.actionSinginFragmentToHomeScrn()
                     navController.navigate(action)
                     viewModel.saveUserDetails(response.data.refreshToken)

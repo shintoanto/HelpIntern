@@ -3,9 +3,8 @@ package com.shinto.helpintern
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -52,8 +51,8 @@ class accomodation_fragment : Fragment() {
                         Log.d("Res", it.toString())
                     }
                 }
-                is Resource.Loading ->{
-                   showProgressBar()
+                is Resource.Loading -> {
+                    showProgressBar()
                 }
             }
         })
@@ -76,19 +75,35 @@ class accomodation_fragment : Fragment() {
 //                }
 //                return false
 //            }
-//
 //            override fun onQueryTextChange(p0: String?): Boolean {
 //                adapter.filter.filter(p0)
 //                return false
 //            }
-//
 //        })
 
         // Inflate the layout for this fragment
         return binding.root
     }
-//    private fun navigation(it:AccomodationDataClassItem){
-//        val action:NavDirections = Acco
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+        val item = menu.findItem(R.id.menuitem)
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+        })
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+//    private fun navigation(it: AccomodationDataClassItem) {
+//        val action: NavDirections = accomodation_fragmentDirections.
 //    }
 
     private fun showProgressBar() {

@@ -133,14 +133,16 @@
         style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="45dp"
         android:layout_marginBottom="5dp"
         android:text="Don't have an account?"
         android:textAppearance="?attr/textAppearanceButton"
         android:textColor="#A8191818"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.101" />
 
     <TextView
         android:id="@+id/singUp_btn"

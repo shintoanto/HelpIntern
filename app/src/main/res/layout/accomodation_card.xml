@@ -29,7 +29,7 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="#217BF4">
+                android:background="#F7285695">
 
 <!--                android:background="@drawable/home_24"-->
                 <ImageView
@@ -53,7 +53,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#217BF4"
+                android:background="@color/blue_theme"
                 android:orientation="vertical"
                 android:padding="10dp">
 

@@ -48,7 +48,6 @@ class home_scrn : Fragment() {
 //            startActivity(intent)
 //        }
 
-
         return binding?.root!!
     }
 

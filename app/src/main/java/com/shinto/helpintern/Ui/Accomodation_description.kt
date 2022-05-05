@@ -10,7 +10,7 @@ import com.shinto.helpintern.databinding.FragmentAccomodationDescriptionBinding
 import com.shinto.helpintern.databinding.FragmentAccomodationFragmentBinding
 import java.util.zip.Inflater
 
-class accomodation_description : Fragment() {
+ class accomodation_description : Fragment() {
     private lateinit var binding: FragmentAccomodationDescriptionBinding
 
     override fun onCreateView(
